@@ -1,8 +1,9 @@
 // components/NovaPoshtaAreasDropdown.tsx
-import { AreaData } from "../api/novaPoshtaGetAreasAPI";
+
+import { SettlementAreaData } from "@/api/novaPoshtaGetAreasAPI";
 
 interface Props {
-  areas: AreaData[];
+  areas: SettlementAreaData[];
   onSelectArea: (areaRef: string) => void;
 }
 

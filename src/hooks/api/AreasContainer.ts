@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-
-import { fetchAreas } from "@/api";
+import { fetchAreas } from "@/api"; // Import the AreaData type from your API file
+import { SettlementAreaData } from "@/api/novaPoshtaGetAreasAPI";
 
 export const useAreasContainer = () => {
-  const [areas, setAreas] = useState([]);
+  const [areas, setAreas] = useState<SettlementAreaData[]>([]); // Specify the type for areas as AreaData[]
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
