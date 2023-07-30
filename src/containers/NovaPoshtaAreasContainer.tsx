@@ -5,7 +5,11 @@ import NovaPoshtaSettlementsDropdown from "../components/NovaPoshtaSettlementsDr
 import { useAreasContainer } from "@/hooks/api/AreasContainer";
 import { useCountryRegionContainer } from "@/hooks/api/CountryRegionContainer";
 import { useSettlementsContainer } from "@/hooks/api/SettlementsContainer";
-import { fetchAreas } from "@/api";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+// import Button from "@mui/material/Button/Button";
+// import Grid from "@mui/material/Grid/Grid";
 
 interface NovaPoshtaAreasContainerProps {
   onSettlementSelected: (settlementRef: string) => void;
@@ -44,7 +48,7 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
 
   const handleSelectSettlement = (settlementRef: string) => {
     // Call the external callback function
-    onSettlementSelected(settlementRef);
+    // onSettlementSelected(settlementRef);
   };
 
   // const handleFetchAreas = () => {
@@ -96,28 +100,46 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
 
     return (
       <>
-        <NovaPoshtaAreasDropdown
-          areas={areas}
-          onSelectArea={handleSelectArea}
-        />
-        <NovaPoshtaSettlementCountryRegionDropdown
-          settlementCountryRegions={countryRegions}
-          onSelectSettlementCountryRegion={handleSelectSettlementCountryRegion}
-        />
-        <NovaPoshtaSettlementsDropdown
-          settlements={settlements}
-          onSelectSettlement={handleSelectSettlement}
-        />
+        <Grid container spacing={2} alignItems="center" justifyContent="center">
+          <Grid item xs={12}>
+            <NovaPoshtaAreasDropdown
+              areas={areas}
+              onSelectArea={handleSelectArea}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <NovaPoshtaSettlementCountryRegionDropdown
+              settlementCountryRegions={countryRegions}
+              onSelectSettlementCountryRegion={
+                handleSelectSettlementCountryRegion
+              }
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <NovaPoshtaSettlementsDropdown
+              settlements={settlements}
+              onSelectSettlement={handleSelectSettlement}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => console.log("submit")}
+            >
+              Click Me
+            </Button>
+          </Grid>
+        </Grid>
       </>
     );
   };
 
   return (
     <div>
-      <h1>
+      <Typography variant="h1" fontSize={30} style={{ marginBottom: "20px" }}>
         {selectedArea ? `Selected Area: ${selectedArea}` : "Nova Poshta Areas"}
-      </h1>
-      {/* <button onClick={handleFetchAreas}>Fetch Areas</button> */}
+      </Typography>
       {renderContent()}
     </div>
   );

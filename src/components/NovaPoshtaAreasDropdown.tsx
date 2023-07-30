@@ -1,6 +1,8 @@
-// components/NovaPoshtaAreasDropdown.tsx
-
+import { useState } from "react";
+import { FormControl, TextField } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
 import { SettlementAreaData } from "@/api/novaPoshtaGetAreasAPI";
+import React from "react";
 
 interface Props {
   areas: SettlementAreaData[];
@@ -8,23 +10,37 @@ interface Props {
 }
 
 const NovaPoshtaAreasDropdown: React.FC<Props> = ({ areas, onSelectArea }) => {
-  const handleSelectArea = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onSelectArea(event.target.value);
-    // areas.find((area) => area.Ref === event.target.value)?.Description || ""
+  const [selectedArea, setSelectedArea] = useState<string | null>(null);
+  const [focusedArea, setFocusedArea] = useState<string | null>(null);
+
+  const handleChange = (
+    event: React.ChangeEvent<{}>,
+    value: SettlementAreaData | null
+  ) => {
+    setSelectedArea(value ? value.Ref : null);
+  };
+
+  const handleBlur = () => {
+    setFocusedArea(selectedArea);
+    if (selectedArea) {
+      onSelectArea(selectedArea);
+    }
   };
 
   return (
-    <div>
-      <label htmlFor="areaSelect">Select Area:</label>
-      <select id="areaSelect" onChange={handleSelectArea}>
-        <option value="">Select an area</option>
-        {areas.map((area) => (
-          <option key={area.Ref} value={area.Ref}>
-            {`${area.Description}`}
-          </option>
-        ))}
-      </select>
-    </div>
+    <FormControl fullWidth variant="outlined">
+      <Autocomplete
+        disablePortal
+        id="area-select"
+        options={areas}
+        getOptionLabel={(area) => area.Description}
+        value={areas.find((area) => area.Ref === focusedArea) || null}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        renderInput={(params) => <TextField {...params} label="Select Area" />}
+        sx={{ width: 300 }} // Additional styling for the Autocomplete component
+      />
+    </FormControl>
   );
 };
 
