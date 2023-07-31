@@ -1,9 +1,12 @@
-// import "./globals.css";
+import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Scada } from "next/font/google";
 // import { Providers } from "./providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const scada = Scada({
+  weight: "400",
+  subsets: ["cyrillic-ext", "latin-ext"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={scada.className} style={{ padding: 0, margin: 0 }}>
+        {children}
+      </body>
     </html>
   );
 }
