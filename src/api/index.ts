@@ -1,6 +1,9 @@
 import { callNovaPoshtaGetSettlementAreasAPI } from "./novaPoshtaGetAreasAPI";
+import { callNovaPoshtaGetCitiesAPI } from "./novaPoshtaGetCitiesAPI";
 import { callNovaPoshtaGetSettlementCountryRegionAPI } from "./novaPoshtaGetSettlementCountryRegionAPI";
 import { callNovaPoshtaGetSettlementsAPI } from "./novaPoshtaGetSettlementsAPI";
+import { callNovaPoshtaGetStreetsAPI } from "./novaPoshtaGetStreetsAPI";
+import { callNovaPoshtaGetWarehousesAPI } from "./novaPoshtaGetWarehousesAPI";
 
 export async function fetchAreas() {
   try {
@@ -12,6 +15,26 @@ export async function fetchAreas() {
     }
   } catch (error) {
     console.error("Error fetching areas:", error);
+    throw error;
+  }
+}
+
+export async function fetchCities() {
+  try {
+    const response = await callNovaPoshtaGetCitiesAPI({
+      // Ref: areaRef,
+      Page: "1",
+      FindByString: "", // You can specify a search query here if needed
+      Limit: "20",
+    });
+
+    if (response.success) {
+      return response.data;
+    } else {
+      throw new Error("Error fetching cities");
+    }
+  } catch (error) {
+    console.error("Error fetching cities:", error);
     throw error;
   }
 }
@@ -45,6 +68,40 @@ export async function fetchSettlements(regionRef: string, areaRef: string) {
     }
   } catch (error) {
     console.error("Error fetching settlements:", error);
+    throw error;
+  }
+}
+
+export async function fetchStreets(cityRef: string, searchQuery: string) {
+  try {
+    const response = await callNovaPoshtaGetStreetsAPI({
+      cityRef,
+      searchQuery,
+    });
+    if (response.success) {
+      return response.data;
+    } else {
+      throw new Error("Error fetching streets");
+    }
+  } catch (error) {
+    console.error("Error fetching streets:", error);
+    throw error;
+  }
+}
+
+export async function fetchWarehouses(cityRef: string, warehouseId?: string) {
+  try {
+    const response = await callNovaPoshtaGetWarehousesAPI({
+      CityRef: cityRef,
+      WarehouseId: warehouseId,
+    });
+    if (response.success) {
+      return response.data;
+    } else {
+      throw new Error("Error fetching warehouses");
+    }
+  } catch (error) {
+    console.error("Error fetching warehouses:", error);
     throw error;
   }
 }

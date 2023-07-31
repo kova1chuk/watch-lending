@@ -69,6 +69,7 @@ export async function callNovaPoshtaGetSettlementsAPI(
         methodProperties: {
           AreaRef: requestData.areaRef,
           RegionRef: requestData.regionRef,
+          Warehouse: "1",
         },
       }),
     });
