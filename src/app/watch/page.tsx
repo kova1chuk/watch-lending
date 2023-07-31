@@ -2,7 +2,7 @@
 
 import React from "react";
 import Head from "next/head";
-import { Carousel } from "antd";
+import { Button, Carousel, Space } from "antd";
 import Chessboard from "@/components/Chessboard";
 import PriceBlock from "@/components/PriceBlock";
 import ShippingAdvantages from "@/components/ShippingAdvantages";
@@ -36,12 +36,15 @@ const contentStyle: React.CSSProperties = {
 
 const WatchPage = () => {
   const characteristics = [
-    { title: "Точний механізм", icon: <ClockCircleOutlined /> },
+    {
+      title: "Точний механізм",
+      icon: <ClockCircleOutlined sizes="large" />,
+    },
     { title: "Стійкість до води", icon: <HeartOutlined /> },
-    { title: "Глобальна доставка", icon: <EnvironmentOutlined /> },
-    { title: "Конкурентні ціни", icon: <DollarCircleOutlined /> },
-    { title: "Висока якість", icon: <StarOutlined /> },
-    { title: "Гарантія", icon: <SyncOutlined /> },
+    { title: "Швидка доставка", icon: <EnvironmentOutlined /> },
+    { title: "Найкраща ціна", icon: <DollarCircleOutlined /> },
+    { title: "Найвища якість", icon: <StarOutlined /> },
+    { title: "Гарантія 12 міс", icon: <SyncOutlined /> },
   ];
 
   const shippingInfo =
@@ -109,20 +112,24 @@ const WatchPage = () => {
                 <Image
                   src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.jpeg" // Path to the image inside the "public" folder
                   alt="Example Image"
-                  style={{
-                    objectFit: "cover", // Make the image cover the container while maintaining aspect ratio
-                    objectPosition: "center", // Center the image within the container
-                  }}
-                  fill={true} // Fill the parent container
-                  priority // Optional: Load the image with priority
+                  //   style={{
+                  //     objectFit: "cover", // Make the image cover the container while maintaining aspect ratio
+                  //     objectPosition: "center", // Center the image within the container
+                  //   }}
+                  //   fill={true} // Fill the parent container
+                  //   priority // Optional: Load the image with priority
+                  layout="fill" // Fill the parent container
+                  objectFit="cover" // Make the image cover the container while maintaining aspect ratio
+                  objectPosition="center" // Center the image within the container
+                  priority
                 />
               </div>
             </div>
             <div>
               <div style={{ ...contentStyle, background: "#52c41a" }}>
-                <h2>Watch 2</h2>
+                {/* <h2>Watch 2</h2>
                 <p>Discount: 30%</p>
-                <button>Buy Now</button>
+                <button>Buy Now</button> */}
                 <Image
                   src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.jpeg" // Path to the image inside the "public" folder
                   alt="Example Image"
@@ -135,21 +142,21 @@ const WatchPage = () => {
             </div>
             <div>
               <div style={{ ...contentStyle, background: "#fadb14" }}>
-                <h2>Watch 3</h2>
+                {/* <h2>Watch 3</h2>
                 <p>Discount: 15%</p>
-                <button>Buy Now</button>
+                <button>Buy Now</button> */}
               </div>
             </div>
             <div>
               <div style={{ ...contentStyle, background: "#ff4d4f" }}>
-                <h2>Watch 4</h2>
+                {/* <h2>Watch 4</h2>
                 <p>Discount: 25%</p>
-                <button>Buy Now</button>
+                <button>Buy Now</button> */}
               </div>
             </div>
           </Carousel>{" "}
-          <section style={{ margin: "40px 0" }}>
-            <h2>Характеристики годинника</h2>
+          <section>
+            {/* <h2>Характеристики годинника</h2> */}
             <WatchCharacteristics characteristics={characteristics} />
           </section>
           <Chessboard />{" "}
@@ -163,6 +170,14 @@ const WatchPage = () => {
             <h2>Ціна продукту</h2>
             <PriceBlock currency={price.currency} amount={price.amount} />
           </section>
+          <Space.Compact block>
+            <Button type="primary" size="large">
+              Новапошта
+            </Button>
+            <Button type="primary" size="large">
+              Укрпошта
+            </Button>
+          </Space.Compact>
         </section>
       </main>
       {/* Add your footer and other common elements here */}

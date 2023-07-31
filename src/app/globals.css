@@ -23,3 +23,8 @@ body {
     )
     rgb(var(--background-start-rgb)); */
 }
+
+p {
+  margin: 0;
+  padding: 0;
+}
