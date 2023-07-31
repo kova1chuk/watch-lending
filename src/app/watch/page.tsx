@@ -17,6 +17,8 @@ import {
 import WatchCharacteristics from "@/components/WatchCharacteristics";
 import Image from "next/image";
 import { Scada } from "next/font/google";
+import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
+import Footer from "@/components/Footer";
 
 const scada = Scada({
   weight: "400",
@@ -177,9 +179,15 @@ const WatchPage = () => {
             <Button type="primary" size="large">
               Укрпошта
             </Button>
-          </Space.Compact>
+          </Space.Compact>{" "}
+          <NovaPoshtaAreasContainer
+            onSettlementSelected={function (settlementRef: string): void {
+              throw new Error("Function onSettlementSelected not implemented.");
+            }}
+          />
         </section>
-      </main>
+      </main>{" "}
+      <Footer />
       {/* Add your footer and other common elements here */}
     </div>
   );
