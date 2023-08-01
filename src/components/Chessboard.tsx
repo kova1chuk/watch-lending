@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Row, Col, Divider } from "antd";
+import { Row, Col, Divider, Collapse } from "antd";
 
 interface AdvantageData {
   image: string;
@@ -131,23 +131,84 @@ const ImageBox: React.FC<{ advantage: AdvantageData }> = ({ advantage }) => {
 };
 
 const Chessboard = () => {
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  // Update the isMobileView state on window resize
+  const handleWindowResize = () => {
+    setIsMobileView(window.innerWidth < 555);
+  };
+
+  useEffect(() => {
+    handleWindowResize(); // Check the initial width
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      // Clean up the event listener on component unmount
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
     <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-      {advantagesData.map((advantage, index) => (
-        <Row key={index} gutter={[16, 16]}>
-          {index % 2 ? (
-            <>
-              <DescriptionBox advantage={advantage} />
-              <ImageBox advantage={advantage} />
-            </>
-          ) : (
-            <>
-              <ImageBox advantage={advantage} />
-              <DescriptionBox advantage={advantage} />
-            </>
-          )}
-        </Row>
-      ))}
+      {advantagesData.map((advantage, index) =>
+        !isMobileView ? (
+          <Row key={index} gutter={[16, 16]}>
+            {index % 2 ? (
+              <>
+                <DescriptionBox advantage={advantage} />
+                <ImageBox advantage={advantage} />
+              </>
+            ) : (
+              <>
+                <ImageBox advantage={advantage} />
+                <DescriptionBox advantage={advantage} />
+              </>
+            )}
+          </Row>
+        ) : (
+          <>
+            <Collapse
+              expandIconPosition="end"
+              ghost
+              style={{ marginTop: "1.5rem" }}
+              items={[
+                {
+                  label: (
+                    <>
+                      <h4
+                        style={{
+                          fontSize: "1.2rem",
+                          lineHeight: "1.6rem",
+                          fontStyle: "bold",
+                        }}
+                      >
+                        {advantage.title}
+                      </h4>
+                      <Divider
+                        style={{
+                          marginTop: "0.6rem",
+                          marginBottom: "1rem",
+                        }}
+                      />
+                    </>
+                  ),
+                  children: (
+                    <p
+                      style={{
+                        marginBottom: "0",
+                        fontSize: "1rem",
+                        lineHeight: "1.3rem",
+                      }}
+                    >
+                      {advantage.description}
+                    </p>
+                  ),
+                },
+              ]}
+            />
+            <ImageBox advantage={advantage} />
+          </>
+        )
+      )}
     </div>
   );
 };
