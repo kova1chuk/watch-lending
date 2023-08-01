@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Row, Col } from "antd";
+import { Row, Col, Divider } from "antd";
 
 interface AdvantageData {
   image: string;
@@ -76,9 +76,38 @@ const DescriptionBox: React.FC<{ advantage: AdvantageData }> = ({
 }) => {
   return (
     <Col xs={24} sm={12}>
-      <div style={{ border: "1px solid #ccc", padding: "20px" }}>
-        <h3 style={{ marginBottom: "10px" }}>{advantage.title}</h3>
-        <p style={{ marginBottom: "0" }}>{advantage.description}</p>
+      <div
+        style={{
+          // border: "1px solid #ccc",
+          padding: "20px",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+
+          // textAlign: "center",
+        }}
+      >
+        <h4
+          style={{
+            fontSize: "1.2rem",
+            lineHeight: "1.6rem",
+            fontStyle: "bold",
+          }}
+        >
+          {advantage.title}
+        </h4>
+        <Divider
+          style={{
+            marginTop: "0.6rem",
+            marginBottom: "1rem",
+          }}
+        />
+        <p
+          style={{ marginBottom: "0", fontSize: "1rem", lineHeight: "1.3rem" }}
+        >
+          {advantage.description}
+        </p>
       </div>
     </Col>
   );
@@ -87,10 +116,11 @@ const DescriptionBox: React.FC<{ advantage: AdvantageData }> = ({
 const ImageBox: React.FC<{ advantage: AdvantageData }> = ({ advantage }) => {
   return (
     <Col xs={24} sm={12}>
-      <div style={{ border: "1px solid #ccc", padding: "20px" }}>
+      <div style={{ padding: "20px" }}>
         <Image
           src={advantage.image}
           alt={advantage.title}
+          style={{ borderRadius: "1.5rem" }}
           width={400} // Adjust the width of the image as per your requirements
           height={300} // Adjust the height of the image as per your requirements
           layout="responsive" // Use responsive layout to maintain aspect ratio
