@@ -12,9 +12,9 @@ import {
 const characteristics = [
   {
     title: "Точний механізм",
-    icon: <ClockCircleOutlined sizes="large" />,
+    icon: <ClockCircleOutlined height="3rem" />,
   },
-  { title: "Стійкість до води", icon: <HeartOutlined /> },
+  { title: "Стійкість до води", icon: <HeartOutlined height="5rem" /> },
   { title: "Швидка доставка", icon: <EnvironmentOutlined /> },
   { title: "Найкраща ціна", icon: <DollarCircleOutlined /> },
   { title: "Найвища якість", icon: <StarOutlined /> },
@@ -38,7 +38,7 @@ const glassStyle: React.CSSProperties = {
 };
 
 const characteristicItemStyle: React.CSSProperties = {
-  margin: 0,
+  margin: "0.5rem",
   //   padding: "16px",
   //   margin: "16px",
 };
@@ -59,11 +59,10 @@ const WatchCharacteristics: React.FC<WatchCharacteristicsProps> = (
 ) => {
   return (
     <section style={{ ...characteristicContainer }}>
-      {/* <Space> */}
       <List
         dataSource={characteristics}
         grid={{
-          gutter: 6,
+          gutter: 8,
           xs: 2,
           sm: 3,
           md: 3,
@@ -92,8 +91,22 @@ const WatchCharacteristics: React.FC<WatchCharacteristicsProps> = (
               }}
             >
               <section> */}
-            <Space direction="vertical">
-              <div>{item.icon}</div>
+            <Space
+              direction="vertical"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                color: "white",
+                alignItems: "center",
+                margin: "1rem",
+                // height: "100%",
+                // width: "100%",
+              }}
+            >
+              {/* <div> */}
+              {item.icon}
+              {/* </div> */}
               <p>{item.title}</p>
             </Space>
             {/* </section>
