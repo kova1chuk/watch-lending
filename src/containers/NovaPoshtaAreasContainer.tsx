@@ -1,21 +1,21 @@
 import { useState } from "react";
-import NovaPoshtaAreasDropdown from "../components/NovaPoshtaAreasDropdown";
-import NovaPoshtaSettlementCountryRegionDropdown from "../components/NovaPoshtaSettlementCountryRegionDropdown";
-import NovaPoshtaSettlementsDropdown from "../components/NovaPoshtaSettlementsDropdown";
-import NovaPoshtaStreetsDropdown from "../components/NovaPoshtaStreetsDropdown"; // Import the new street dropdown component
-import NovaPoshtaWarehousesDropdown from "../components/NovaPoshtaWarehousesDropdown"; // Import the new warehouse dropdown component
+
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 import { useAreasContainer } from "@/hooks/api/AreasContainer";
 import { useCountryRegionContainer } from "@/hooks/api/CountryRegionContainer";
 import { useSettlementsContainer } from "@/hooks/api/SettlementsContainer";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import { useStreetsContainer } from "@/hooks/api/useStreetsContainer";
 import { useCitiesContainer } from "@/hooks/api/useCitiesContainer";
-import NovaPoshtaCitiesDropdown from "@/components/NovaPoshtaCitiesDropdown";
-// import Button from "@mui/material/Button/Button";
-// import Grid from "@mui/material/Grid/Grid";
+
+import NovaPoshtaAreasDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaAreasDropdown";
+import NovaPoshtaCitiesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaCitiesDropdown";
+import NovaPoshtaSettlementCountryRegionDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaSettlementCountryRegionDropdown";
+import NovaPoshtaSettlementsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaSettlementsDropdown";
+import NovaPoshtaStreetsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaStreetsDropdown";
+import NovaPoshtaWarehousesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaWarehousesDropdown";
 
 interface NovaPoshtaAreasContainerProps {
   onSettlementSelected: (settlementRef: string) => void;

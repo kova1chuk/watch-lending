@@ -1,5 +1,25 @@
 import React from "react";
 import { List, Space } from "antd";
+import {
+  ClockCircleOutlined,
+  HeartOutlined,
+  EnvironmentOutlined,
+  DollarCircleOutlined,
+  StarOutlined,
+  SyncOutlined,
+} from "@ant-design/icons";
+
+const characteristics = [
+  {
+    title: "Точний механізм",
+    icon: <ClockCircleOutlined sizes="large" />,
+  },
+  { title: "Стійкість до води", icon: <HeartOutlined /> },
+  { title: "Швидка доставка", icon: <EnvironmentOutlined /> },
+  { title: "Найкраща ціна", icon: <DollarCircleOutlined /> },
+  { title: "Найвища якість", icon: <StarOutlined /> },
+  { title: "Гарантія 12 міс", icon: <SyncOutlined /> },
+];
 
 const characteristicContainer: React.CSSProperties = {
   backgroundImage: "url('/assets/img/background/blur.webp')",
@@ -18,6 +38,7 @@ const glassStyle: React.CSSProperties = {
 };
 
 const characteristicItemStyle: React.CSSProperties = {
+  margin: 0,
   //   padding: "16px",
   //   margin: "16px",
 };
@@ -28,55 +49,60 @@ interface Characteristic {
 }
 
 interface WatchCharacteristicsProps {
-  characteristics: Characteristic[];
+  // characteristics: Characteristic[];
 }
 
-const WatchCharacteristics: React.FC<WatchCharacteristicsProps> = ({
-  characteristics,
-}) => {
+const WatchCharacteristics: React.FC<WatchCharacteristicsProps> = (
+  {
+    // characteristics,
+  }
+) => {
   return (
-    <List
-      dataSource={characteristics}
-      grid={{
-        gutter: 6,
-        xs: 2,
-        sm: 3,
-        md: 3,
-        lg: 3,
-        xl: 6,
-        xxl: 6,
-      }}
-      style={{ ...characteristicContainer }}
-      renderItem={(item) => (
-        <List.Item
-          style={{
-            ...glassStyle,
-            ...characteristicItemStyle,
-          }}
-        >
-          <Space
-            size="large"
-            align="center"
+    <section style={{ ...characteristicContainer }}>
+      {/* <Space> */}
+      <List
+        dataSource={characteristics}
+        grid={{
+          gutter: 6,
+          xs: 2,
+          sm: 3,
+          md: 3,
+          lg: 3,
+          xl: 6,
+          xxl: 6,
+        }}
+        renderItem={(item) => (
+          <List.Item
             style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              color: "white",
-              alignItems: "center",
-              height: "100%",
-              width: "100%",
+              ...glassStyle,
+              ...characteristicItemStyle,
             }}
           >
-            <section>
-              <Space direction="vertical">
-                <div>{item.icon}</div>
-                <p>{item.title}</p>
-              </Space>
-            </section>
-          </Space>
-        </List.Item>
-      )}
-    />
+            {/* <Space
+              size="large"
+              align="center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                color: "white",
+                alignItems: "center",
+                height: "100%",
+                width: "100%",
+              }}
+            >
+              <section> */}
+            <Space direction="vertical">
+              <div>{item.icon}</div>
+              <p>{item.title}</p>
+            </Space>
+            {/* </section>
+            </Space> */}
+          </List.Item>
+        )}
+      />
+      {/* </Space> */}
+    </section>
   );
 };
 

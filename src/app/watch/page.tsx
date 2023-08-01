@@ -6,14 +6,7 @@ import { Button, Carousel, Space } from "antd";
 import Chessboard from "@/components/Chessboard";
 import PriceBlock from "@/components/PriceBlock";
 import ShippingAdvantages from "@/components/ShippingAdvantages";
-import {
-  ClockCircleOutlined,
-  HeartOutlined,
-  EnvironmentOutlined,
-  DollarCircleOutlined,
-  StarOutlined,
-  SyncOutlined,
-} from "@ant-design/icons";
+
 import WatchCharacteristics from "@/components/WatchCharacteristics";
 import Image from "next/image";
 import { Scada } from "next/font/google";
@@ -37,18 +30,6 @@ const contentStyle: React.CSSProperties = {
 };
 
 const WatchPage = () => {
-  const characteristics = [
-    {
-      title: "Точний механізм",
-      icon: <ClockCircleOutlined sizes="large" />,
-    },
-    { title: "Стійкість до води", icon: <HeartOutlined /> },
-    { title: "Швидка доставка", icon: <EnvironmentOutlined /> },
-    { title: "Найкраща ціна", icon: <DollarCircleOutlined /> },
-    { title: "Найвища якість", icon: <StarOutlined /> },
-    { title: "Гарантія 12 міс", icon: <SyncOutlined /> },
-  ];
-
   const shippingInfo =
     "Безкоштовна доставка в межах країни при замовленні на суму понад $100.";
   const advantagesData = [
@@ -157,10 +138,7 @@ const WatchPage = () => {
               </div>
             </div>
           </Carousel>{" "}
-          <section>
-            {/* <h2>Характеристики годинника</h2> */}
-            <WatchCharacteristics characteristics={characteristics} />
-          </section>
+          <WatchCharacteristics />
           <Chessboard />{" "}
           <section style={{ margin: "40px 0" }}>
             <ShippingAdvantages
