@@ -9,10 +9,13 @@ const TopBannerCarousel: React.FC<Props> = () => {
       <div>
         <div
           style={{
-            backgroundColor: "black",
-            paddingTop: "10px",
-            height: "2rem",
-            borderBottom: "1px solid white",
+            // backgroundColor: "black",
+            // paddingTop: "10px",
+            height: "3rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            // borderBottom: "1px solid white",
           }}
         >
           <p

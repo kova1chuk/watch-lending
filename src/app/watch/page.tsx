@@ -49,12 +49,10 @@ const WatchPage = () => {
     amount: 2999.99,
   };
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <main>
         <section>
-          <TopBannerCarousel />
           <MainBannerCarousel />
-          <WatchCharacteristics />
           <Chessboard />
           <ShippingAdvantages
             shippingInfo={shippingInfo}

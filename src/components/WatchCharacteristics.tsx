@@ -22,19 +22,19 @@ const characteristics = [
 ];
 
 const characteristicContainer: React.CSSProperties = {
-  backgroundImage: "url('/assets/img/background/blur.webp')",
-  //   backgroundImage: "url('/assets/img/background/gradient-1.jpg')",
-  backgroundPosition: "center",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
+  // backgroundImage: "url('/assets/img/background/blur.webp')",
+  // //   backgroundImage: "url('/assets/img/background/gradient-1.jpg')",
+  // backgroundPosition: "center",
+  // backgroundSize: "cover",
+  // backgroundRepeat: "no-repeat",
 };
 
 const glassStyle: React.CSSProperties = {
   background: "rgba(0, 0, 0, 0.27)",
   borderRadius: "16px",
-  boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0 4px 30px rgba(255, 255, 255, 0.1), 0.1)",
   backdropFilter: "blur(5px)",
-  border: "1px solid rgba(0, 0, 0, 0.17)",
+  border: "1px solid rgba(201, 201, 201, 0.17)",
 };
 
 const characteristicItemStyle: React.CSSProperties = {
