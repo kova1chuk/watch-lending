@@ -1,7 +1,7 @@
 import React, { SyntheticEvent } from "react";
 import { FormControl, TextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { SettlementData } from "../api/novaPoshtaGetSettlementsAPI";
+import { SettlementData } from "@/api/novaPoshtaGetSettlementsAPI";
 
 interface NovaPoshtaSettlementsDropdownProps {
   settlements: SettlementData[];
