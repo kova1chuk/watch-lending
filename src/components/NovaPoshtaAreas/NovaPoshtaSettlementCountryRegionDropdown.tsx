@@ -56,8 +56,8 @@ const options = [
 
 const NovaPoshtaSettlementCountryRegionDropdown: React.FC = () => (
   <AutoComplete
-    dropdownClassName="certain-category-search-dropdown"
-    dropdownMatchSelectWidth={500}
+    // dropdownClassName="certain-category-search-dropdown"
+    // dropdownMatchSelectWidth={500}
     style={{ width: 250 }}
     options={options}
   >
