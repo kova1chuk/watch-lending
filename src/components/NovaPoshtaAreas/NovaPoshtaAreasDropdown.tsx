@@ -31,11 +31,6 @@ const NovaPoshtaAreasDropdown: React.FC<Props> = ({ areas, onSelectArea }) => {
       <Select
         showSearch
         placeholder="Select Area"
-        // value={
-        //   focusedArea
-        //     ? areas.find((area) => area.Ref === focusedArea)?.Description
-        //     : ""
-        // }
         onChange={onChange}
         onSearch={onSearch}
         onBlur={handleBlur}
@@ -43,9 +38,7 @@ const NovaPoshtaAreasDropdown: React.FC<Props> = ({ areas, onSelectArea }) => {
           option?.props.children.toLowerCase().indexOf(input.toLowerCase()) !==
           -1
         }
-        // style={{ cursor: "pointer" }}
         size="large"
-        // notFoundContent="No nono"
       >
         {areas.map((area) => (
           <Option key={area.Ref} value={area.Ref}>
