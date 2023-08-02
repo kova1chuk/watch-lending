@@ -72,9 +72,9 @@ const WatchPage = () => {
             }}
           />
         </section>
+        <LocationInfo />
       </main>
       <Footer />
-      <LocationInfo />
       {/* Add your footer and other common elements here */}
     </div>
   );

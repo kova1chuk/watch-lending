@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+const apiKey = process.env.NEXT_PUBLIC_G_MAPS_API_KEY;
+
 const LocationInfo: React.FC = () => {
   const [locationData, setLocationData] = useState<string | null>(null);
 
@@ -7,7 +9,6 @@ const LocationInfo: React.FC = () => {
     navigator.geolocation.getCurrentPosition(
       async (position: GeolocationPosition) => {
         const { latitude, longitude } = position.coords;
-        const apiKey = "ВАШ_КЛЮЧ_API";
         const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
         try {
@@ -21,15 +22,39 @@ const LocationInfo: React.FC = () => {
             );
 
             if (locality) {
-              setLocationData(locality.long_name);
+              const englishPlaceName = locality.long_name;
+
+              // Translate English place name to Ukrainian
+              const translationResponse = await fetch(
+                `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    q: englishPlaceName,
+                    target: "uk",
+                  }),
+                }
+              );
+
+              const translationData = await translationResponse.json();
+              const translatedPlaceName =
+                translationData.data.translations[0].translatedText;
+
+              setLocationData(translatedPlaceName);
             }
           }
         } catch (error) {
-          console.error("Error fetching location data:", error);
+          console.error(
+            "Помилка під час отримання даних про місцезнаходження:",
+            error
+          );
         }
       },
       (error: GeolocationPositionError) => {
-        console.error("Error getting geolocation:", error);
+        console.error("Помилка під час отримання геолокації:", error);
       }
     );
   }, []);
