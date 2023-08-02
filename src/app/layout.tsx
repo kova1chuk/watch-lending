@@ -20,6 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+      </head>
       <body className={scada.className} style={{ padding: 0, margin: 0 }}>
         {children}
       </body>
