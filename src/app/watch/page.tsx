@@ -12,6 +12,7 @@ import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
 import Footer from "@/components/Footer";
 import TopBannerCarousel from "@/components/TopBannerCarousel";
 import MainBannerCarousel from "@/components/MainBannerCarousel";
+import Advantages from "@/components/Advantages";
 
 const WatchPage = () => {
   const shippingInfo =
@@ -44,24 +45,18 @@ const WatchPage = () => {
     },
   ];
 
-  const price = {
-    currency: "Грн",
-    amount: 2999.99,
-  };
   return (
     <div style={{ overflowX: "hidden" }}>
       <main>
         <section>
           <MainBannerCarousel />
           <Chessboard />
-          <ShippingAdvantages
+          {/* <ShippingAdvantages
             shippingInfo={shippingInfo}
             advantages={advantagesData}
-          />
-          <section style={{ margin: "40px 0" }}>
-            <h2>Ціна продукту</h2>
-            <PriceBlock currency={price.currency} amount={price.amount} />
-          </section>
+          /> */}
+          <Advantages />
+          <PriceBlock />
           <Space.Compact block>
             <Button type="primary" size="large">
               Новапошта

@@ -27,6 +27,7 @@ const characteristicContainer: React.CSSProperties = {
   // backgroundPosition: "center",
   // backgroundSize: "cover",
   // backgroundRepeat: "no-repeat",
+  padding: "1rem 0",
 };
 
 const glassStyle: React.CSSProperties = {

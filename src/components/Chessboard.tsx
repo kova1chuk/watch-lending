@@ -79,7 +79,7 @@ const DescriptionBox: React.FC<{ advantage: AdvantageData }> = ({
       <div
         style={{
           // border: "1px solid #ccc",
-          padding: "20px",
+          padding: "0 20px",
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -116,7 +116,7 @@ const DescriptionBox: React.FC<{ advantage: AdvantageData }> = ({
 const ImageBox: React.FC<{ advantage: AdvantageData }> = ({ advantage }) => {
   return (
     <Col xs={24} sm={12}>
-      <div style={{ padding: "20px" }}>
+      <div style={{ padding: "0 20px" }}>
         <Image
           src={advantage.image}
           alt={advantage.title}
@@ -169,7 +169,7 @@ const Chessboard = () => {
             <Collapse
               expandIconPosition="end"
               ghost
-              style={{ marginTop: "1.5rem" }}
+              style={{ margin: "1.5rem 1rem 0.3rem" }}
               items={[
                 {
                   label: (
@@ -186,7 +186,7 @@ const Chessboard = () => {
                       <Divider
                         style={{
                           marginTop: "0.6rem",
-                          marginBottom: "1rem",
+                          marginBottom: "0",
                         }}
                       />
                     </>
