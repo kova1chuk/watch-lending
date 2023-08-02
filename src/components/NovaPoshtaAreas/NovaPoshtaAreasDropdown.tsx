@@ -27,7 +27,7 @@ const NovaPoshtaAreasDropdown: React.FC<Props> = ({ areas, onSelectArea }) => {
   };
 
   return (
-    <Form.Item name="area" style={{ width: 300 }}>
+    <Form.Item name="area">
       <Select
         showSearch
         placeholder="Select Area"

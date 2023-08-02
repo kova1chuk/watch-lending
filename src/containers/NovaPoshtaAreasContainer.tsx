@@ -1,14 +1,11 @@
-import { useState } from "react";
-
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
+import { Row, Col, Button, Typography } from "antd";
 
 import { useAreasContainer } from "@/hooks/api/AreasContainer";
 import { useCountryRegionContainer } from "@/hooks/api/CountryRegionContainer";
 import { useSettlementsContainer } from "@/hooks/api/SettlementsContainer";
-import { useStreetsContainer } from "@/hooks/api/useStreetsContainer";
 import { useCitiesContainer } from "@/hooks/api/useCitiesContainer";
+import { useStreetsContainer } from "@/hooks/api/useStreetsContainer";
 
 import NovaPoshtaAreasDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaAreasDropdown";
 import NovaPoshtaCitiesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaCitiesDropdown";
@@ -16,6 +13,8 @@ import NovaPoshtaSettlementCountryRegionDropdown from "@/components/NovaPoshtaAr
 import NovaPoshtaSettlementsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaSettlementsDropdown";
 import NovaPoshtaStreetsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaStreetsDropdown";
 import NovaPoshtaWarehousesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaWarehousesDropdown";
+
+const { Title } = Typography;
 
 interface NovaPoshtaAreasContainerProps {
   onSettlementSelected: (settlementRef: string) => void;
@@ -30,10 +29,10 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
     useState<string | null>(null);
   const [selectedSettlementRegion, setSelectedSettlementRegion] =
     useState<string>("");
-  const [selectedStreet, setSelectedStreet] = useState<string | null>(null); // New state for selected street
+  const [selectedStreet, setSelectedStreet] = useState<string | null>(null);
   const [selectedWarehouse, setSelectedWarehouse] = useState<string | null>(
     null
-  ); // New state for selected warehouse
+  );
 
   const {
     areas,
@@ -62,12 +61,12 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
     streets,
     loading: streetsLoading,
     error: streetsError,
-  } = useStreetsContainer(selectedCity, ""); // Fetch streets based on the selected cityRef and searchQuery
+  } = useStreetsContainer(selectedCity, "");
 
   const handleSelectArea = (areaRef: string) => {
     setSelectedArea(areaRef);
-    setSelectedStreet(null); // Reset selected street when selecting a new area
-    setSelectedWarehouse(null); // Reset selected warehouse when selecting a new area
+    setSelectedStreet(null);
+    setSelectedWarehouse(null);
   };
 
   const handleSelectCity = (cityRef: string) => {
@@ -79,153 +78,99 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
   };
 
   const handleSelectSettlement = (settlementRef: string) => {
-    console.log(settlementRef);
     setSelectedSettlementRegion(settlementRef);
   };
+
   const handleSelectStreet = (streetRef: string) => {
     setSelectedStreet(streetRef);
   };
+
   const handleSelectWarehouse = (warehouseRef: string) => {
     setSelectedWarehouse(warehouseRef);
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     const orderDetails = {
       delivery: "novaposhta",
-      city: selectedCity, // Update city with the selected city
-      settlementsRegion: selectedSettlementRegion, // Update settlementsRegion with the selected settlement region
-      street: selectedStreet, // Add the selected street to the orderDetails object
-      warehouse: selectedWarehouse, // Add the selected warehouse to the orderDetails object
+      city: selectedCity,
+      settlementsRegion: selectedSettlementRegion,
+      street: selectedStreet,
+      warehouse: selectedWarehouse,
       product: "Smartphone",
       seller: "John's Electronics",
       price: "$500",
     };
-    const webhookUrl = "http://localhost:3001/order"; // Replace with the public URL provided by ngrok
 
-    fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderDetails),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Order details sent to Telegram bot:", data);
-      })
-      .catch((error) => {
-        console.error("Error sending order details:", error);
+    const webhookUrl = "http://localhost:3001/order"; // Replace with your webhook URL
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderDetails),
       });
+
+      const data = await response.json();
+      console.log("Order details sent to Telegram bot:", data);
+    } catch (error) {
+      console.error("Error sending order details:", error);
+    }
   };
 
-  // const handleFetchAreas = () => {
-  //   fetchAreas();
-  // };
-
   const renderContent = () => {
-    const render = [];
+    // if (areasLoading || countryRegionsLoading || settlementsLoading) {
+    //   return <p>Loading...</p>;
+    // }
 
-    // TODO: setup errors
-    //========================================================
-    if (areasLoading) {
-      render.push(<p>Loading areas...</p>);
-    }
-
-    if (areasError) {
-      render.push(<p>Error fetching areas: {areasError}</p>);
-    }
-
-    if (areas.length === 0) {
-      render.push(<p>Click the button to fetch areas.</p>);
-    }
-    //========================================================
-    if (countryRegionsLoading) {
-      render.push(<p>Loading country regions...</p>);
-    }
-
-    if (countryRegionsError) {
-      render.push(<p>Error fetching country regions: {countryRegionsError}</p>);
-    }
-
-    if (countryRegions.length === 0) {
-      render.push(<p>Select an area to fetch settlement country regions.</p>);
-    }
-
-    if (settlementsLoading) {
-      render.push(<p>Loading settlements...</p>);
-    }
-
-    if (settlementsError) {
-      render.push(<p>Error fetching settlements: {settlementsError}</p>);
-    }
-
-    if (settlements.length === 0) {
-      render.push(
-        <p>Select a settlement country region to fetch settlements.</p>
-      );
-    }
+    // if (areasError || countryRegionsError || settlementsError) {
+    //   return <p>Error loading data.</p>;
+    // }
 
     return (
       <>
-        <Grid container spacing={2} alignItems="center" justifyContent="center">
-          <Grid item xs={12}>
-            <NovaPoshtaAreasDropdown
-              areas={areas}
-              onSelectArea={handleSelectArea}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <NovaPoshtaCitiesDropdown
-              cities={cities} // Pass the cities data here
-              onSelectCity={handleSelectCity} // Pass the city selection handler
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <NovaPoshtaSettlementCountryRegionDropdown
-              settlementCountryRegions={countryRegions}
-              onSelectSettlementCountryRegion={
-                handleSelectSettlementCountryRegion
-              }
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <NovaPoshtaSettlementsDropdown
-              settlements={settlements}
-              onSelectSettlement={handleSelectSettlement}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <NovaPoshtaStreetsDropdown
-              // cityRef={selectedSettlementRegion || ""}
-              // searchQuery=""
-              streets={streets}
-              onSelectStreet={handleSelectStreet}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <NovaPoshtaWarehousesDropdown
-              settlementRef={
-                selectedSettlementCountryRegion || selectedCity || ""
-              }
-              onSelectWarehouse={handleSelectWarehouse}
-            />
-          </Grid>{" "}
-          <Grid item xs={12}>
-            <Button variant="contained" color="primary" onClick={onSubmit}>
-              Click Me
-            </Button>
-          </Grid>
-        </Grid>
+        <NovaPoshtaAreasDropdown
+          areas={areas}
+          onSelectArea={handleSelectArea}
+        />
+        <NovaPoshtaCitiesDropdown
+          cities={cities}
+          onSelectCity={handleSelectCity}
+        />
+        <NovaPoshtaSettlementCountryRegionDropdown
+          settlementCountryRegions={countryRegions}
+          onSelectSettlementCountryRegion={handleSelectSettlementCountryRegion}
+        />
+        <NovaPoshtaSettlementsDropdown
+          settlements={settlements}
+          onSelectSettlement={handleSelectSettlement}
+        />
+        <NovaPoshtaStreetsDropdown
+          streets={streets}
+          onSelectStreet={handleSelectStreet}
+        />
+        <NovaPoshtaWarehousesDropdown
+          settlementRef={selectedSettlementCountryRegion || selectedCity || ""}
+          onSelectWarehouse={handleSelectWarehouse}
+        />
       </>
     );
   };
 
   return (
-    <div>
-      <Typography variant="h1" fontSize={30} style={{ marginBottom: "20px" }}>
+    <div style={{ textAlign: "center" }}>
+      <Title level={3}>
         {selectedArea ? `Selected Area: ${selectedArea}` : "Nova Poshta Areas"}
-      </Typography>
-      {renderContent()}
+      </Title>
+      <Row justify="center">
+        <Col xs={24} sm={20} md={18} lg={16} xl={14}>
+          {renderContent()}
+          <Button type="primary" onClick={onSubmit}>
+            Click Me
+          </Button>
+        </Col>
+      </Row>
     </div>
   );
 };

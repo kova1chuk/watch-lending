@@ -52,12 +52,12 @@ interface AdvantagesProps {}
 
 const Advantages: React.FC<AdvantagesProps> = () => {
   return (
-    <>
+    <div style={{ maxWidth: "800px", margin: "0 auto" }}>
       {data.map((advantage, index) => (
-        <Col key={index} xs={24} sm={12}>
+        <Col key={index} xs={24}>
           <div
             style={{
-              border: "1px solid #ccc",
+              // border: "1px solid #ccc",
               padding: "20px",
               textAlign: "center",
             }}
@@ -77,7 +77,7 @@ const Advantages: React.FC<AdvantagesProps> = () => {
           </div>
         </Col>
       ))}
-    </>
+    </div>
   );
 };
 
