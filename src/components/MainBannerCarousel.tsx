@@ -13,7 +13,7 @@ const scada = Scada({
 // import "antd/dist/antd.css"; // Import the Ant Design CSS
 
 const contentStyle: React.CSSProperties = {
-  height: "500px",
+  maxHeight: "500px",
   color: "#fff",
   //   lineHeight: "300px",
   textAlign: "center",
@@ -34,6 +34,9 @@ interface Props {}
 const MainBannerCarousel: React.FC<Props> = () => {
   const [autoplay, setAutopalay] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const [divWidth, setDivWidth] = useState(0);
+  const [divHeight, setDivHeight] = useState(0);
 
   const handleSlideChange = (current: number) => {
     if (current === 1) {
@@ -58,8 +61,29 @@ const MainBannerCarousel: React.FC<Props> = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = document?.getElementById("banner-carousel")?.offsetWidth;
+
+      if (newWidth) {
+        // Calculate desired height based on width (e.g., maintain aspect ratio)
+        const newHeight = newWidth * 0.65; // Adjust the ratio as needed
+
+        setDivWidth(newWidth);
+        setDivHeight(newHeight);
+      }
+    };
+
+    handleResize(); // Initial call
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div style={{ ...bannerContainer }}>
+    <div id="banner-carousel" style={{ ...bannerContainer }}>
       <TopBannerCarousel />
       <Carousel
         effect="fade"
@@ -67,25 +91,7 @@ const MainBannerCarousel: React.FC<Props> = () => {
         autoplay={autoplay}
       >
         <div>
-          <div style={{ ...contentStyle }}>
-            {/* <h2
-            className={scada.className}
-            style={{
-              zIndex: 100,
-              position: "relative",
-              color: "white",
-              backgroundColor: "black",
-              display: "inline",
-              padding: "12px",
-              border: "1px solid white",
-              borderRadius: "6px",
-              top: "150px",
-            }}
-          >
-            Вічна елегантність у кожному моменті - годинники Carnival Black
-          </h2> */}
-            {/* <p>Знижка: 20%</p>
-      <button>Купуй зараз</button> */}
+          <div style={{ ...contentStyle, height: divHeight }}>
             <Image
               src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.jpeg" // Path to the image inside the "public" folder
               alt="Example Image"
@@ -103,7 +109,9 @@ const MainBannerCarousel: React.FC<Props> = () => {
           </div>
         </div>
         <div>
-          <div style={{ ...contentStyle }}>
+          <div
+            style={{ ...contentStyle, height: divHeight, position: "relative" }}
+          >
             {/* <h2>Watch 2</h2>
       <p>Discount: 30%</p>
       <button>Buy Now</button> */}
@@ -114,25 +122,31 @@ const MainBannerCarousel: React.FC<Props> = () => {
               objectFit="cover" // Make the image cover the container while maintaining aspect ratio
               objectPosition="center" // Center the image within the container
               priority // Optional: Load the image with priority
+            /> */}{" "}
+            {/* <Image
+              src="/assets/gif/cheetah-mars-black/videoplayback.gif"
+              alt="Example Image"
+              //   style={{
+              //     objectFit: "cover", // Make the image cover the container while maintaining aspect ratio
+              //     objectPosition: "center", // Center the image within the container
+              //   }}
+              //   fill={true} // Fill the parent container
+              //   priority // Optional: Load the image with priority
+              layout="fill" // Fill the parent container
+              objectFit="cover" // Make the image cover the container while maintaining aspect ratio
+              objectPosition="center" // Center the image within the container
+              priority
             /> */}
             <video
-              controls
               ref={videoRef}
               autoPlay
               muted
-              style={{
-                // layout: "fill", // Fill the parent container
-                objectFit: "cover", // Make the image cover the container while maintaining aspect ratio
-                objectPosition: "center",
-                width: "100%",
-              }}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             >
               <source
                 src="/assets/video/cheetah-mars-black/videoplayback.mp4"
                 type="video/mp4"
               />
-              {/* Add additional source elements if needed */}
-              {/* <source src="/path-to-other-format" type="video/other-format" /> */}
               Your browser does not support the video tag.
             </video>
           </div>
