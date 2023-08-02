@@ -1,5 +1,5 @@
 import { Carousel } from "antd";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Scada } from "next/font/google";
 import TopBannerCarousel from "./TopBannerCarousel";
@@ -32,12 +32,42 @@ const bannerContainer: React.CSSProperties = {
 interface Props {}
 
 const MainBannerCarousel: React.FC<Props> = () => {
+  const [autoplay, setAutopalay] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleSlideChange = (current: number) => {
+    if (current === 1) {
+      // Assuming second slide index is 1
+      playVideo();
+    } else {
+      pauseVideo();
+    }
+  };
+
+  const playVideo = () => {
+    if (videoRef.current) {
+      setAutopalay(false);
+      videoRef.current.play();
+    }
+  };
+
+  const pauseVideo = () => {
+    if (videoRef.current) {
+      setAutopalay(true);
+      videoRef.current.pause();
+    }
+  };
+
   return (
     <div style={{ ...bannerContainer }}>
       <TopBannerCarousel />
-      <Carousel effect="fade">
+      <Carousel
+        effect="fade"
+        afterChange={handleSlideChange}
+        autoplay={autoplay}
+      >
         <div>
-          <div style={{ ...contentStyle, background: "#1890ff" }}>
+          <div style={{ ...contentStyle }}>
             {/* <h2
             className={scada.className}
             style={{
@@ -73,34 +103,54 @@ const MainBannerCarousel: React.FC<Props> = () => {
           </div>
         </div>
         <div>
-          <div style={{ ...contentStyle, background: "#52c41a" }}>
+          <div style={{ ...contentStyle }}>
             {/* <h2>Watch 2</h2>
       <p>Discount: 30%</p>
       <button>Buy Now</button> */}
-            <Image
+            {/* <Image
               src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.jpeg" // Path to the image inside the "public" folder
               alt="Example Image"
               layout="fill" // Fill the parent container
               objectFit="cover" // Make the image cover the container while maintaining aspect ratio
               objectPosition="center" // Center the image within the container
               priority // Optional: Load the image with priority
-            />
+            /> */}
+            <video
+              controls
+              ref={videoRef}
+              autoPlay
+              muted
+              style={{
+                // layout: "fill", // Fill the parent container
+                objectFit: "cover", // Make the image cover the container while maintaining aspect ratio
+                objectPosition: "center",
+                width: "100%",
+              }}
+            >
+              <source
+                src="/assets/video/cheetah-mars-black/videoplayback.mp4"
+                type="video/mp4"
+              />
+              {/* Add additional source elements if needed */}
+              {/* <source src="/path-to-other-format" type="video/other-format" /> */}
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
-        <div>
+        {/* <div>
           <div style={{ ...contentStyle, background: "#fadb14" }}>
-            {/* <h2>Watch 3</h2>
-      <p>Discount: 15%</p>
-      <button>Buy Now</button> */}
+            <h2>Watch 3</h2>
+            <p>Discount: 15%</p>
+            <button>Buy Now</button>
           </div>
         </div>
         <div>
           <div style={{ ...contentStyle, background: "#ff4d4f" }}>
-            {/* <h2>Watch 4</h2>
-      <p>Discount: 25%</p>
-      <button>Buy Now</button> */}
+            <h2>Watch 4</h2>
+            <p>Discount: 25%</p>
+            <button>Buy Now</button>
           </div>
-        </div>
+        </div> */}
       </Carousel>
       <WatchCharacteristics />
     </div>
