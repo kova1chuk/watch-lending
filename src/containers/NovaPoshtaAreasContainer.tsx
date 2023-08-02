@@ -139,8 +139,8 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
           onSelectCity={handleSelectCity}
         />
         <NovaPoshtaSettlementCountryRegionDropdown
-          settlementCountryRegions={countryRegions}
-          onSelectSettlementCountryRegion={handleSelectSettlementCountryRegion}
+        // settlementCountryRegions={countryRegions}
+        // onSelectSettlementCountryRegion={handleSelectSettlementCountryRegion}
         />
         <NovaPoshtaSettlementsDropdown
           settlements={settlements}
