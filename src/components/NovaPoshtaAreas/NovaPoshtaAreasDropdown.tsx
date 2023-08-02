@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { FormControl, TextField } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
+import { Form, Select } from "antd";
 import { SettlementAreaData } from "@/api/novaPoshtaGetAreasAPI";
 import React from "react";
+
+const { Option } = Select;
 
 interface Props {
   areas: SettlementAreaData[];
@@ -10,37 +11,49 @@ interface Props {
 }
 
 const NovaPoshtaAreasDropdown: React.FC<Props> = ({ areas, onSelectArea }) => {
-  const [selectedArea, setSelectedArea] = useState<string | null>(null);
-  const [focusedArea, setFocusedArea] = useState<string | null>(null);
+  const onChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
 
-  const handleChange = (
-    event: React.ChangeEvent<{}>,
-    value: SettlementAreaData | null
-  ) => {
-    setSelectedArea(value ? value.Ref : null);
+  const onSearch = (value: string) => {
+    console.log("search:", value);
   };
 
   const handleBlur = () => {
-    setFocusedArea(selectedArea);
-    if (selectedArea) {
-      onSelectArea(selectedArea);
-    }
+    // setFocusedArea(selectedArea);
+    // if (selectedArea) {
+    //   onSelectArea(selectedArea);
+    // }
   };
 
   return (
-    <FormControl fullWidth variant="outlined">
-      <Autocomplete
-        disablePortal
-        id="area-select"
-        options={areas}
-        getOptionLabel={(area) => area.Description}
-        value={areas.find((area) => area.Ref === focusedArea) || null}
-        onChange={handleChange}
+    <Form.Item name="area" style={{ width: 300 }}>
+      <Select
+        showSearch
+        placeholder="Select Area"
+        // value={
+        //   focusedArea
+        //     ? areas.find((area) => area.Ref === focusedArea)?.Description
+        //     : ""
+        // }
+        onChange={onChange}
+        onSearch={onSearch}
         onBlur={handleBlur}
-        renderInput={(params) => <TextField {...params} label="Select Area" />}
-        sx={{ width: 300 }} // Additional styling for the Autocomplete component
-      />
-    </FormControl>
+        filterOption={(input, option) =>
+          option?.props.children.toLowerCase().indexOf(input.toLowerCase()) !==
+          -1
+        }
+        // style={{ cursor: "pointer" }}
+        size="large"
+        // notFoundContent="No nono"
+      >
+        {areas.map((area) => (
+          <Option key={area.Ref} value={area.Ref}>
+            {area.Description}
+          </Option>
+        ))}
+      </Select>
+    </Form.Item>
   );
 };
 
