@@ -1,7 +1,7 @@
 // src/utils/novaPoshtaGetAreasAPI.ts
 
 const apiUrl = "https://api.novaposhta.ua/v2.0/json/";
-const apiKey = process.env.NEW_POST_API_KEY;
+const apiKey = process.env.NEXT_PUBLIC_NEW_POST_API_KEY;
 
 export interface GetSettlementAreasRequestData {}
 
