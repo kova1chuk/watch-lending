@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import TopBannerCarousel from "@/components/TopBannerCarousel";
 import MainBannerCarousel from "@/components/MainBannerCarousel";
 import Advantages from "@/components/Advantages";
+import LocationInfo from "@/components/LocationInfo";
 
 const WatchPage = () => {
   const shippingInfo =
@@ -73,6 +74,7 @@ const WatchPage = () => {
         </section>
       </main>
       <Footer />
+      <LocationInfo />
       {/* Add your footer and other common elements here */}
     </div>
   );
