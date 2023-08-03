@@ -34,7 +34,7 @@ const LocationInfo: React.FC = () => {
                   },
                   body: JSON.stringify({
                     q: englishPlaceName,
-                    target: "uk",
+                    target: "uk-UA",
                   }),
                 }
               );
