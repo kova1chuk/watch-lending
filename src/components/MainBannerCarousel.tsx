@@ -23,7 +23,7 @@ const contentStyle: React.CSSProperties = {
 
 const bannerContainer: React.CSSProperties = {
   backgroundImage: "url('/assets/img/background/blur.webp')",
-  //   backgroundImage: "url('/assets/img/background/gradient-1.jpg')",
+  //   backgroundImage: "url('/assets/img/background/gradient-1.webp')",
   backgroundPosition: "center",
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
@@ -93,7 +93,7 @@ const MainBannerCarousel: React.FC<Props> = () => {
         <div>
           <div style={{ ...contentStyle, height: divHeight }}>
             <Image
-              src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.jpeg" // Path to the image inside the "public" folder
+              src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp" // Path to the image inside the "public" folder
               alt="Example Image"
               //   style={{
               //     objectFit: "cover", // Make the image cover the container while maintaining aspect ratio

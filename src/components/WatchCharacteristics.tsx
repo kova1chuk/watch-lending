@@ -23,7 +23,7 @@ const characteristics = [
 
 const characteristicContainer: React.CSSProperties = {
   // backgroundImage: "url('/assets/img/background/blur.webp')",
-  // //   backgroundImage: "url('/assets/img/background/gradient-1.jpg')",
+  // //   backgroundImage: "url('/assets/img/background/gradient-1.webp')",
   // backgroundPosition: "center",
   // backgroundSize: "cover",
   // backgroundRepeat: "no-repeat",
