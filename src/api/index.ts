@@ -4,6 +4,10 @@ import { callNovaPoshtaGetSettlementCountryRegionAPI } from "./novaPoshtaGetSett
 import { callNovaPoshtaGetSettlementsAPI } from "./novaPoshtaGetSettlementsAPI";
 import { callNovaPoshtaGetStreetsAPI } from "./novaPoshtaGetStreetsAPI";
 import { callNovaPoshtaGetWarehousesAPI } from "./novaPoshtaGetWarehousesAPI";
+import {
+  NovaPoshtaSearchSettlementsResponse,
+  callNovaPoshtaSearchSettlementsAPI,
+} from "./novaPoshtaSearchSettlementsAPI";
 
 export async function fetchAreas() {
   try {
@@ -105,3 +109,22 @@ export async function fetchWarehouses(cityRef: string, warehouseId?: string) {
     throw error;
   }
 }
+
+export const fetchSettlementsSearch = async (cityName: string) => {
+  try {
+    const response: NovaPoshtaSearchSettlementsResponse =
+      await callNovaPoshtaSearchSettlementsAPI({
+        CityName: cityName,
+        Limit: 50,
+        Page: 1,
+      });
+
+    if (response.success) {
+      const cities = response.data[0].Addresses;
+
+      return cities;
+    }
+  } catch (error) {
+    console.error("Error fetching settlements:", error);
+  }
+};

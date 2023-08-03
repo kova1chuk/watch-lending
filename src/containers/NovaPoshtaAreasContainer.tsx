@@ -13,6 +13,7 @@ import NovaPoshtaSettlementCountryRegionDropdown from "@/components/NovaPoshtaAr
 import NovaPoshtaSettlementsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaSettlementsDropdown";
 import NovaPoshtaStreetsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaStreetsDropdown";
 import NovaPoshtaWarehousesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaWarehousesDropdown";
+import { useSettlementsSearch } from "@/hooks/api/useSettlementsSearch";
 
 const { Title } = Typography;
 
@@ -33,6 +34,7 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
   const [selectedWarehouse, setSelectedWarehouse] = useState<string | null>(
     null
   );
+  const [settlementSearchStr, setSettlementSearchStr] = useState<string>("");
 
   const {
     areas,
@@ -49,19 +51,24 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
     loading: countryRegionsLoading,
     error: countryRegionsError,
   } = useCountryRegionContainer(selectedArea);
-  const {
-    settlements,
-    loading: settlementsLoading,
-    error: settlementsError,
-  } = useSettlementsContainer(
-    selectedSettlementCountryRegion || "",
-    selectedArea
-  );
+  // const {
+  //   settlements,
+  //   loading: settlementsLoading,
+  //   error: settlementsError,
+  // } = useSettlementsContainer(
+  //   selectedSettlementCountryRegion || "",
+  //   selectedArea
+  // );
   const {
     streets,
     loading: streetsLoading,
     error: streetsError,
   } = useStreetsContainer(selectedCity, "");
+  const {
+    settlements,
+    loading: settlementsLoading,
+    error: settlementsError,
+  } = useSettlementsSearch(settlementSearchStr);
 
   const handleSelectArea = (areaRef: string) => {
     setSelectedArea(areaRef);
@@ -130,26 +137,30 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
 
     return (
       <Space direction="vertical">
-        <NovaPoshtaAreasDropdown
+        {/* <NovaPoshtaAreasDropdown
           areas={areas}
           onSelectArea={handleSelectArea}
-        />
-        <NovaPoshtaCitiesDropdown
+        /> */}
+        {/* <NovaPoshtaCitiesDropdown
           cities={cities}
           onSelectCity={handleSelectCity}
         />
         <NovaPoshtaSettlementCountryRegionDropdown
           settlementCountryRegions={countryRegions}
           onSelectSettlementCountryRegion={handleSelectSettlementCountryRegion}
-        />
+        /> */}
         <NovaPoshtaSettlementsDropdown
           settlements={settlements}
           onSelectSettlement={handleSelectSettlement}
+          onSearch={(str) => {
+            console.log(str);
+            setSettlementSearchStr(str);
+          }}
         />
-        <NovaPoshtaStreetsDropdown
+        {/* <NovaPoshtaStreetsDropdown
           streets={streets}
           onSelectStreet={handleSelectStreet}
-        />
+        /> */}
         <NovaPoshtaWarehousesDropdown
           settlementRef={selectedSettlementCountryRegion || selectedCity || ""}
           onSelectWarehouse={handleSelectWarehouse}
