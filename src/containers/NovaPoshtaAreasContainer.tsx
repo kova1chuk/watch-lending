@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Button, Typography } from "antd";
+import { Row, Col, Button, Typography, Space } from "antd";
 
 import { useAreasContainer } from "@/hooks/api/AreasContainer";
 import { useCountryRegionContainer } from "@/hooks/api/CountryRegionContainer";
@@ -129,7 +129,7 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
     // }
 
     return (
-      <>
+      <Space direction="vertical">
         <NovaPoshtaAreasDropdown
           areas={areas}
           onSelectArea={handleSelectArea}
@@ -154,7 +154,7 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
           settlementRef={selectedSettlementCountryRegion || selectedCity || ""}
           onSelectWarehouse={handleSelectWarehouse}
         />
-      </>
+      </Space>
     );
   };
 
@@ -166,9 +166,9 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
       <Row justify="center">
         <Col xs={24} sm={20} md={18} lg={16} xl={14}>
           {renderContent()}
-          <Button type="primary" onClick={onSubmit}>
+          {/* <Button type="primary" onClick={onSubmit}>
             Click Me
-          </Button>
+          </Button> */}
         </Col>
       </Row>
     </div>

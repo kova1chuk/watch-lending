@@ -7,9 +7,11 @@ const price = {
   compareAmount: 3499.99, // Comparison price
 };
 
-interface PriceBlockProps {}
+interface PriceBlockProps {
+  handleCreateOrder: () => void;
+}
 
-const PriceBlock: React.FC<PriceBlockProps> = () => {
+const PriceBlock: React.FC<PriceBlockProps> = ({ handleCreateOrder }) => {
   const { currency, amount, compareAmount } = price;
 
   return (
@@ -42,7 +44,7 @@ const PriceBlock: React.FC<PriceBlockProps> = () => {
             type="primary"
             size="large"
             color="black"
-            onClick={() => console.log("Замовити")}
+            onClick={handleCreateOrder}
           >
             Замовити
           </Button>

@@ -1,18 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { Button, Row, Space } from "antd";
+import { Button, Card, Row, Space } from "antd";
 
 import Chessboard from "@/components/Chessboard";
 import PriceBlock from "@/components/PriceBlock";
-import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
 import Footer from "@/components/Footer";
 import MainBannerCarousel from "@/components/MainBannerCarousel";
 import Advantages from "@/components/Advantages";
-import LocationInfo from "@/components/LocationInfo";
+import OrderModal from "@/components/OrderModal";
 
 const WatchPage = () => {
+  const [isOrderModalOpen, setOrderIsModalOpen] = useState(true);
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <main>
@@ -20,21 +21,24 @@ const WatchPage = () => {
           <MainBannerCarousel />
           <Chessboard />
           <Advantages />
-          <PriceBlock />
+          <PriceBlock handleCreateOrder={() => setOrderIsModalOpen(true)} />
 
           <Row justify="center">
             <Space.Compact>
               <Button
                 type="default"
                 size="large"
+                onClick={() => setOrderIsModalOpen(true)}
                 style={{
                   color: "#CA3B2B",
                   fontStyle: "bold",
-                  lineHeight: "24px",
+                  lineHeight: "26px",
                   fontSize: "20px",
-                  borderColor: "#CA3B2B",
+                  borderColor: "#787878",
                   display: "flex",
                   justifyContent: "center",
+                  borderRight: "none",
+                  height: "2.6rem",
                 }}
                 icon={
                   <Image
@@ -45,13 +49,45 @@ const WatchPage = () => {
                   />
                 }
               >
-                Нова пошта
+                Нова пошта -
               </Button>
+              <Card
+                size="small"
+                style={{
+                  // color: "#CA3B2B",
+                  fontStyle: "bold",
+                  lineHeight: "16px",
+                  fontSize: "20px",
+                  borderColor: "#787878",
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: 0,
+                  height: "2.6rem",
+                  borderRadius: "0 8px 8px 0",
+                  borderLeft: "none",
+                }}
+              >
+                <p>
+                  <span
+                    style={{
+                      fontSize: "1rem",
+                    }}
+                  >
+                    отримання
+                  </span>{" "}
+                  1-2 дні
+                </p>
+              </Card>
+            </Space.Compact>
+          </Row>
+          <Row justify="center">
+            <Space.Compact>
               <Button
                 type="default"
                 size="large"
+                onClick={() => setOrderIsModalOpen(true)}
                 style={{
-                  // color: "#F5C258",
+                  color: "#F5C258",
                   fontStyle: "bold",
                   fontSize: "20px",
                   lineHeight: "24px",
@@ -70,16 +106,43 @@ const WatchPage = () => {
               >
                 Укрпошта
               </Button>
+              <Card
+                size="small"
+                style={{
+                  // color: "#CA3B2B",
+                  fontStyle: "bold",
+                  lineHeight: "16px",
+                  fontSize: "20px",
+                  borderColor: "#787878",
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: 0,
+                  height: "2.6rem",
+                  borderRadius: "0 8px 8px 0",
+                  borderLeft: "none",
+                }}
+              >
+                <p>
+                  <span
+                    style={{
+                      fontSize: "1rem",
+                    }}
+                  >
+                    отримання
+                  </span>{" "}
+                  2-5 днів
+                </p>
+              </Card>
             </Space.Compact>
           </Row>
+
           {/* </div> */}
-          <NovaPoshtaAreasContainer
-            onSettlementSelected={function (settlementRef: string): void {
-              throw new Error("Function onSettlementSelected not implemented.");
-            }}
+
+          <OrderModal
+            isModalOpen={isOrderModalOpen}
+            setIsModalOpen={setOrderIsModalOpen}
           />
         </section>
-        <LocationInfo />
       </main>
       <Footer />
     </div>

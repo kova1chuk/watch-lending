@@ -1,4 +1,4 @@
-import { Carousel } from "antd";
+import { Carousel, Rate } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Scada } from "next/font/google";
@@ -106,6 +106,7 @@ const MainBannerCarousel: React.FC<Props> = () => {
               objectPosition="center" // Center the image within the container
               priority
             />
+            <Rate disabled value={5} />
           </div>
         </div>
 

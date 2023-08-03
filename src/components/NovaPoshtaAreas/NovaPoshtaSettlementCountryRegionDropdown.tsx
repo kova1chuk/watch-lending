@@ -52,7 +52,6 @@ const NovaPoshtaSettlementCountryRegionDropdown: React.FC<Props> = ({
       onChange={handleChange}
       onBlur={handleBlur}
       onSearch={(value) => console.log("first", value)}
-      style={{ width: "100%", margin: "1.2rem" }}
     >
       <Input.Search size="large" placeholder="Select a region" />
     </AutoComplete>
