@@ -12,7 +12,7 @@ import Advantages from "@/components/Advantages";
 import OrderModal from "@/components/OrderModal";
 
 const WatchPage = () => {
-  const [isOrderModalOpen, setOrderIsModalOpen] = useState(false);
+  const [isOrderModalOpen, setOrderIsModalOpen] = useState(true);
 
   return (
     <div style={{ overflowX: "hidden" }}>

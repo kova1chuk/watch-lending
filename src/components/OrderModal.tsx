@@ -1,8 +1,18 @@
-import { Button, Modal, Row, Space, Steps } from "antd";
-import React from "react";
+import {
+  Button,
+  Divider,
+  Modal,
+  Row,
+  Space,
+  Steps,
+  Tabs,
+  TabsProps,
+} from "antd";
+import React, { useState } from "react";
 import Image from "next/image";
 import LocationInfo from "./LocationInfo";
 import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
+import ShippingTabButtons from "./ShippingTabButtons";
 
 interface OrderModalProps {
   isModalOpen: boolean;
@@ -15,6 +25,31 @@ const OrderModal: React.FC<OrderModalProps> = ({
   isModalOpen,
   setIsModalOpen,
 }) => {
+  const [currentTab, setCurrentTab] = useState<"nova" | "ukr">("nova");
+
+  const handleTabChange = (tab: "nova" | "ukr") => {
+    setCurrentTab(tab);
+    // Perform any other logic here
+  };
+  const items: TabsProps["items"] = [
+    {
+      key: "nova",
+      label: `Tab 1`,
+      children: (
+        <NovaPoshtaAreasContainer
+          onSettlementSelected={function (settlementRef: string): void {
+            throw new Error("Function onSettlementSelected not implemented.");
+          }}
+        />
+      ),
+    },
+    {
+      key: "ukr",
+      label: `Tab 2`,
+      children: `Content of Tab Pane 2`,
+    },
+  ];
+
   const handleOk = () => {
     // Handle OK action here
     setIsModalOpen(false);
@@ -38,76 +73,33 @@ const OrderModal: React.FC<OrderModalProps> = ({
       }}
     >
       <Steps
-        current={1}
+        current={0}
         items={[
           {
-            title: "Finished",
-            description,
+            title: "Доставка",
+            description: "Оберіть спосіб доставки",
           },
           {
-            title: "In Progress",
-            description,
-            subTitle: "Left 00:00:08",
+            title: "Контакти",
+            description: "Заповніть контактні данні",
           },
           {
-            title: "Waiting",
-            description,
+            title: "Замовлення",
+            description: "Підсумок за замовленням",
           },
         ]}
       />
-      <Row justify="center">
-        <Space.Compact>
-          <Button
-            type="default"
-            size="large"
-            style={{
-              color: "#CA3B2B",
-              fontStyle: "bold",
-              lineHeight: "24px",
-              borderColor: "#CA3B2B",
-              display: "flex",
-              justifyContent: "center",
-            }}
-            icon={
-              <Image
-                src="/assets/img/svg/common/NovaPoshtaLogo.svg"
-                alt={"Нова пошта логотип"}
-                width={24}
-                height={24}
-              />
-            }
-          >
-            Нова пошта
-          </Button>
-          <Button
-            type="default"
-            size="large"
-            style={{
-              // color: "#F5C258",
-              fontStyle: "bold",
-              fontSize: "20px",
-              lineHeight: "24px",
-              // borderColor: "#F5C258",
-              display: "flex",
-              justifyContent: "center",
-            }}
-            icon={
-              <Image
-                src="/assets/img/svg/common/UkrPoshtaLogo.svg"
-                alt={"Укрпошта логотип"}
-                width={24}
-                height={24}
-              />
-            }
-          >
-            Укрпошта
-          </Button>
-        </Space.Compact>
-      </Row>
-      <NovaPoshtaAreasContainer
-        onSettlementSelected={function (settlementRef: string): void {
-          throw new Error("Function onSettlementSelected not implemented.");
-        }}
+      <Divider style={{ marginTop: "0.55rem" }} />
+      <ShippingTabButtons
+        currentTab={currentTab}
+        handleTabChange={handleTabChange}
+      />
+
+      <Tabs
+        activeKey={currentTab}
+        items={items}
+        renderTabBar={() => undefined}
+        animated
       />
       <LocationInfo />
     </Modal>
