@@ -148,7 +148,7 @@ const Chessboard = () => {
   }, []);
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "800px", margin: "2rem auto" }}>
       {advantagesData.map((advantage, index) =>
         !isMobileView ? (
           <Row key={index} gutter={[16, 16]}>

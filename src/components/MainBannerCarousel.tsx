@@ -67,7 +67,7 @@ const MainBannerCarousel: React.FC<Props> = () => {
 
       if (newWidth) {
         // Calculate desired height based on width (e.g., maintain aspect ratio)
-        const newHeight = newWidth * 0.65; // Adjust the ratio as needed
+        const newHeight = newWidth * 0.7; // Adjust the ratio as needed
 
         setDivWidth(newWidth);
         setDivHeight(newHeight);
@@ -108,46 +108,7 @@ const MainBannerCarousel: React.FC<Props> = () => {
             />
           </div>
         </div>
-        <div>
-          <div
-            style={{ ...contentStyle, height: divHeight, position: "relative" }}
-          >
-            {/* <h2>Watch 2</h2>
-      <p>Discount: 30%</p>
-      <button>Buy Now</button> */}
-            {/* <Image
-              src="/assets/img/cheetah-mars-black/cheetah-mars-black 2.jpeg" // Path to the image inside the "public" folder
-              alt="Example Image"
-              layout="fill" // Fill the parent container
-              objectFit="cover" // Make the image cover the container while maintaining aspect ratio
-              objectPosition="center" // Center the image within the container
-              priority // Optional: Load the image with priority
-            /> */}{" "}
-            {/* <Image
-              src="/assets/gif/cheetah-mars-black/videoplayback.gif"
-              alt="Example Image"
-              //   style={{
-              //     objectFit: "cover", // Make the image cover the container while maintaining aspect ratio
-              //     objectPosition: "center", // Center the image within the container
-              //   }}
-              //   fill={true} // Fill the parent container
-              //   priority // Optional: Load the image with priority
-              layout="fill" // Fill the parent container
-              objectFit="cover" // Make the image cover the container while maintaining aspect ratio
-              objectPosition="center" // Center the image within the container
-              priority
-            /> */}
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            >
-              <source src="https://youtu.be/62VMt88yhNU" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
+
         {/* <div>
           <div style={{ ...contentStyle, background: "#fadb14" }}>
             <h2>Watch 3</h2>
