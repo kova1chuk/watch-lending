@@ -1,5 +1,11 @@
 import React from "react";
 import { Button, Space } from "antd";
+import { Scada } from "next/font/google";
+
+const scada = Scada({
+  weight: "400",
+  subsets: ["cyrillic-ext", "latin-ext"],
+});
 
 const price = {
   currency: "Грн",
@@ -11,45 +17,74 @@ interface PriceBlockProps {
   handleCreateOrder: () => void;
 }
 
+const priceContainer: React.CSSProperties = {
+  backgroundImage: "url('/assets/img/background/blur.webp')",
+  //   backgroundImage: "url('/assets/img/background/gradient-1.webp')",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+};
+
 const PriceBlock: React.FC<PriceBlockProps> = ({ handleCreateOrder }) => {
   const { currency, amount, compareAmount } = price;
 
   return (
     <section
       style={{
-        margin: "40px 0",
+        ...priceContainer,
+        margin: "0 auto",
+        padding: "1.5rem",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center",
+        maxWidth: "800px",
+        color: "white",
+        fontSize: "1.15rem",
+        fontWeight: "bold",
+        ...scada,
+        // borderRadius: "1rem",
       }}
     >
-      <h2 style={{ flex: "1", marginLeft: "1rem" }}>Ціна продукту</h2>
       <div
+        style={{
+          flex: "1",
+          // marginLeft: "1rem",
+          // padding: "20px",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          alignItems: "center",
+          maxWidth: "300px",
+        }}
+      >
+        <h3>{currency}</h3>
+        <p>{amount.toFixed(2)}</p>
+        {compareAmount && compareAmount !== amount && (
+          <p>
+            <del>{compareAmount.toFixed(2)}</del>
+          </p>
+        )}
+      </div>
+      {/* <div
         style={{
           padding: "20px",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
         }}
-      >
-        <Space>
-          <h3>{currency}</h3>
-          <p>{amount.toFixed(2)}</p>
-          {compareAmount && compareAmount !== amount && (
-            <p>
-              <del>{compareAmount.toFixed(2)}</del>
-            </p>
-          )}
-          <Button
-            type="primary"
-            size="large"
-            color="black"
-            onClick={handleCreateOrder}
-          >
-            Замовити
-          </Button>
-        </Space>
-      </div>
+      > */}
+      <Space>
+        <Button
+          type="primary"
+          size="large"
+          style={{ background: "white", color: "black" }}
+          onClick={handleCreateOrder}
+        >
+          Замовити
+        </Button>
+      </Space>
+      {/* </div> */}
     </section>
   );
 };
