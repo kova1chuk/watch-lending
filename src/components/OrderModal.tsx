@@ -98,7 +98,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
       <Tabs
         activeKey={currentTab}
         items={items}
-        renderTabBar={() => undefined}
+        renderTabBar={() => <></>}
         animated
       />
       <LocationInfo />
