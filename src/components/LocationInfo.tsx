@@ -1,3 +1,4 @@
+import callUkrPoshtaGetWarehousesByLocation from "@/api/ukrPoshtaGetWarehousesByLocation";
 import React, { useState, useEffect } from "react";
 
 const apiKey = process.env.NEXT_PUBLIC_G_MAPS_API_KEY;
@@ -10,6 +11,16 @@ const LocationInfo: React.FC = () => {
       async (position: GeolocationPosition) => {
         const { latitude, longitude } = position.coords;
         const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+        // try {
+        //   const data = await callUkrPoshtaGetWarehousesByLocation(
+        //     latitude,
+        //     longitude
+        //   );
+        //   console.log("newnewnew", data);
+        // } catch (error) {
+        //   console.error("Помилка укрпошти за локацією", error);
+        // }
 
         try {
           const response = await fetch(apiUrl);

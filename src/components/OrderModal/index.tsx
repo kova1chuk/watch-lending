@@ -10,7 +10,7 @@ import {
 } from "antd";
 import React, { useState } from "react";
 import Image from "next/image";
-import LocationInfo from "./LocationInfo";
+import LocationInfo from "../LocationInfo";
 import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
 import ShippingTabButtons from "./ShippingTabButtons";
 

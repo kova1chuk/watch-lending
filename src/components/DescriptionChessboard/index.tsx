@@ -120,10 +120,11 @@ const ImageBox: React.FC<{ advantage: AdvantageData }> = ({ advantage }) => {
         <Image
           src={advantage.image}
           alt={advantage.title}
-          style={{ borderRadius: "1.5rem" }}
+          style={{ borderRadius: "1.5rem", objectFit: "cover" }}
+          // fill={true}
           width={400} // Adjust the width of the image as per your requirements
           height={300} // Adjust the height of the image as per your requirements
-          layout="responsive" // Use responsive layout to maintain aspect ratio
+          // layout="responsive" // Use responsive layout to maintain aspect ratio
         />
       </div>
     </Col>
@@ -167,6 +168,7 @@ const Chessboard = () => {
         ) : (
           <>
             <Collapse
+              key={index}
               expandIconPosition="end"
               ghost
               style={{ margin: "1.5rem 1rem 0.3rem" }}
