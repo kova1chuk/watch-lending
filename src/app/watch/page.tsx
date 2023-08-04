@@ -20,8 +20,8 @@ const WatchPage = () => {
         <section>
           <MainBannerCarousel />
           <Chessboard />
-          {/* <Advantages />
-
+          <Advantages />
+          {/*
           <OrderBlock handleCreateOrder={() => setOrderIsModalOpen(true)} />
 
           <OrderModal
