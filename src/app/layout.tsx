@@ -3,6 +3,8 @@ import { Scada } from "next/font/google";
 import Head from "next/head";
 import { Metadata } from "next";
 
+import "./globals.css";
+
 // Initialize Scada font
 const scada = Scada({
   weight: "400",
