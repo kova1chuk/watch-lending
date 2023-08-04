@@ -12,15 +12,15 @@ const LocationInfo: React.FC = () => {
         const { latitude, longitude } = position.coords;
         const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
-        // try {
-        //   const data = await callUkrPoshtaGetWarehousesByLocation(
-        //     latitude,
-        //     longitude
-        //   );
-        //   console.log("newnewnew", data);
-        // } catch (error) {
-        //   console.error("Помилка укрпошти за локацією", error);
-        // }
+        try {
+          const data = await callUkrPoshtaGetWarehousesByLocation(
+            latitude,
+            longitude
+          );
+          console.log("newnewnew", data);
+        } catch (error) {
+          console.error("Помилка укрпошти за локацією", error);
+        }
 
         try {
           const response = await fetch(apiUrl);
