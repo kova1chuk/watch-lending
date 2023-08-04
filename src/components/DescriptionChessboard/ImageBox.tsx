@@ -5,7 +5,15 @@ import { AdvantageData } from "./advantagesData";
 
 const ImageBox: React.FC<{ advantage: AdvantageData }> = ({ advantage }) => {
   return (
-    <Col xs={24} sm={12} style={{ display: "flex", alignItems: "center" }}>
+    <Col
+      xs={24}
+      sm={12}
+      // style={{
+      //   display: "flex",
+      //   alignItems: "center",
+      //   justifyContent: "center",
+      // }}
+    >
       <div style={{ padding: "0 20px" }}>
         <Image
           src={advantage.image}
