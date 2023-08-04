@@ -14,6 +14,7 @@ const TopBannerCarousel: React.FC<Props> = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          position: "relative",
         }}
       >
         <Image

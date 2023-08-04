@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import MainBannerCarousel from "@/components/MainBanner";
 import Advantages from "@/components/Advantages";
 import OrderModal from "@/components/OrderModal";
+import { Head } from "next/document";
 
 const WatchPage = () => {
   const [isOrderModalOpen, setOrderIsModalOpen] = useState(false);
@@ -17,17 +18,17 @@ const WatchPage = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
       <main>
-        <section>
+        <section style={{ maxWidth: "1440px", margin: "0 auto" }}>
           <MainBannerCarousel />
           <Chessboard />
           <Advantages />
-          {/*
+
           <OrderBlock handleCreateOrder={() => setOrderIsModalOpen(true)} />
 
           <OrderModal
             isModalOpen={isOrderModalOpen}
             setIsModalOpen={setOrderIsModalOpen}
-          /> */}
+          />
         </section>
       </main>
       <Footer />

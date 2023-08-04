@@ -16,7 +16,7 @@ const RowChessBoardItem: React.FC<RowChessBoardItemProps> = ({
   const isOddIndex = index % 2 === 1;
 
   return (
-    <Row key={index} gutter={[16, 16]} style={{ margin: "1rem 0" }}>
+    <Row key={index} gutter={[16, 16]}>
       {isOddIndex ? (
         <>
           <DescriptionBox advantage={advantage} />

@@ -6,7 +6,7 @@ const { Title } = Typography;
 const advantagesData = [
   {
     title: "Стиль",
-    label: "Стильні годинники – ваш неперевершений образ",
+    label: "Стильний годинник – ваш неперевершений образ",
     description:
       "Ми пропонуємо стильні годинники, які відповідають вашому образу та відображають останні тренди.",
   },
@@ -59,8 +59,9 @@ interface AdvantagesProps {}
 const Advantages: React.FC<AdvantagesProps> = () => {
   return (
     <div style={{ maxWidth: "800px", margin: "auto" }}>
+      <Title level={2}>Чому нас обирають:</Title>
       {data.map((advantage, index) => (
-        <div style={{ margin: " 1rem" }}>
+        <div key={index} style={{ margin: " 1rem" }}>
           <Badge.Ribbon
             text={advantage.label}
             color="black"

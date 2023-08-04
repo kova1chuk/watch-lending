@@ -7,12 +7,12 @@ import { useSettlementsContainer } from "@/hooks/api/SettlementsContainer";
 import { useCitiesContainer } from "@/hooks/api/useCitiesContainer";
 import { useStreetsContainer } from "@/hooks/api/useStreetsContainer";
 
-import NovaPoshtaAreasDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaAreasDropdown";
+// import NovaPoshtaAreasDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaAreasDropdown";
 import NovaPoshtaCitiesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaCitiesDropdown";
 import NovaPoshtaSettlementCountryRegionDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaSettlementCountryRegionDropdown";
 import NovaPoshtaSettlementsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaSettlementsDropdown";
-import NovaPoshtaStreetsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaStreetsDropdown";
-import NovaPoshtaWarehousesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaWarehousesDropdown";
+// import NovaPoshtaStreetsDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaStreetsDropdown";
+// import NovaPoshtaWarehousesDropdown from "@/components/NovaPoshtaAreas/NovaPoshtaWarehousesDropdown";
 import { useSettlementsSearch } from "@/hooks/api/useSettlementsSearch";
 
 const { Title } = Typography;
@@ -161,10 +161,10 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
           streets={streets}
           onSelectStreet={handleSelectStreet}
         /> */}
-        <NovaPoshtaWarehousesDropdown
+        {/* <NovaPoshtaWarehousesDropdown
           settlementRef={selectedSettlementCountryRegion || selectedCity || ""}
           onSelectWarehouse={handleSelectWarehouse}
-        />
+        /> */}
       </Space>
     );
   };

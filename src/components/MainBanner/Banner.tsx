@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Rate, Button } from "antd";
+import * as Scroll from "react-scroll";
+
+var scroll = Scroll.animateScroll;
 
 const contentStyle: React.CSSProperties = {
-  maxHeight: "500px",
+  maxHeight: "480px",
+  height: "fit-content",
   color: "#fff",
   textAlign: "center",
   background: "#364d79",
@@ -35,7 +39,27 @@ interface BannerProps {
 }
 
 const Banner: React.FC<BannerProps> = ({ imageUrl, discount, buttonText }) => {
-  const divHeight = "400px"; // Define your desired height
+  const [divHeight, setDivHeight] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = document?.getElementById("banner-carousel")?.offsetWidth;
+
+      if (newWidth) {
+        // Calculate desired height based on width (e.g., maintain aspect ratio)
+        const newHeight = newWidth * 0.5; // Adjust the ratio as needed
+        // setDivWidth(newWidth);
+        setDivHeight(newHeight);
+      }
+    };
+
+    handleResize(); // Initial call
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div>
@@ -93,7 +117,7 @@ const Banner: React.FC<BannerProps> = ({ imageUrl, discount, buttonText }) => {
               ...buttonGlassStyle,
               color: "white",
             }}
-            href="#buy-now"
+            onClick={() => scroll.scrollToBottom()}
           >
             {buttonText}
           </Button>

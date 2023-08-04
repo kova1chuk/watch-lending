@@ -49,6 +49,7 @@ export default function RootLayout({
 
         <title>{metadata.title as string}</title>
         {/* Add link tags for favicon and stylesheets */}
+        <link rel="icon" href="./favicon.ico" sizes="any" />
       </Head>
       <body className={scada.className} style={{ padding: 0, margin: 0 }}>
         {children}

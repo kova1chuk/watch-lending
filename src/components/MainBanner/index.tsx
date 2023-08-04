@@ -16,29 +16,6 @@ const bannerContainer: React.CSSProperties = {
 interface Props {}
 
 const MainBannerCarousel: React.FC<Props> = () => {
-  const [divHeight, setDivHeight] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const newWidth = document?.getElementById("banner-carousel")?.offsetWidth;
-
-      if (newWidth) {
-        // Calculate desired height based on width (e.g., maintain aspect ratio)
-        const newHeight = newWidth * 0.5; // Adjust the ratio as needed
-
-        // setDivWidth(newWidth);
-        setDivHeight(newHeight);
-      }
-    };
-
-    handleResize(); // Initial call
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <div id="banner-carousel" style={{ ...bannerContainer }}>
       <TopBannerCarousel />
