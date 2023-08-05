@@ -108,7 +108,9 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
       price: "$500",
     };
 
-    const webhookUrl = "http://localhost:3001/order"; // Replace with your webhook URL
+    // const webhookUrl = "http://localhost:3001/order"; // Replace with your webhook URL
+
+    const webhookUrl = `${process.env.NEXT_PUBLIC_TG_BOT_URL}/order`; // Replace with your webhook URL
 
     try {
       const response = await fetch(webhookUrl, {
@@ -177,9 +179,9 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
       <Row justify="center">
         <Col xs={24} sm={20} md={18} lg={16} xl={14}>
           {renderContent()}
-          {/* <Button type="primary" onClick={onSubmit}>
+          <Button type="primary" onClick={onSubmit}>
             Click Me
-          </Button> */}
+          </Button>
         </Col>
       </Row>
     </div>
