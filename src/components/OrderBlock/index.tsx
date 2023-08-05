@@ -11,8 +11,8 @@ const scada = Scada({
 
 const price = {
   currency: "Грн",
-  amount: 2999.99,
-  compareAmount: 3499.99, // Comparison price
+  amount: 1799,
+  compareAmount: 2999, // Comparison price
 };
 
 interface PriceBlockProps {
