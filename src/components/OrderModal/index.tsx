@@ -8,11 +8,13 @@ import {
   Result,
   Row,
   Select,
+  Skeleton,
   Space,
   Steps,
   Tabs,
   TabsProps,
 } from "antd";
+import { DotChartOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import LocationInfo from "../LocationInfo";
 import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
@@ -76,6 +78,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
   ];
 
   const sendOrderData = async () => {
+    // setCurrentStep(4);
     console.log(selectedShippingTab, selectedShippingTab == "nova");
     const orderDetails = {
       product: `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
@@ -102,31 +105,56 @@ const OrderModal: React.FC<OrderModalProps> = ({
 
       const data = await response.json();
       console.log("Order details sent to Telegram bot:", data);
+      setCurrentStep(4);
     } catch (error) {
       console.error("Error sending order details:", error);
     }
   };
 
-  const handleOk = async () => {
-    // Handle OK action here
+  const handleNext = async () => {
+    setCurrentStep(currentStep + 1);
 
-    if (currentStep < 3) {
-      if (currentStep === 1) setOkText("Замовити");
-      if (currentStep === 2) {
-        try {
-          sendOrderData();
-          setOkText("Закрити");
-        } catch {
-          console.error("Order not sent");
-        }
-      }
-      setCurrentStep(currentStep + 1);
-    } else {
-      setIsModalOpen(false);
-      setCurrentStep(0);
-      setOkText("Далі");
-    }
+    // if (currentStep < 3) {
+    //   if (currentStep === 1) setOkText("Замовити");
+    //   if (currentStep === 2) {
+    //     try {
+    //       sendOrderData();
+    //       setOkText("Закрити");
+    //     } catch {
+    //       console.error("Order not sent");
+    //     }
+    //   }
+    //   setCurrentStep(currentStep + 1);
+    // } else {
+    //   setIsModalOpen(false);
+    //   setCurrentStep(0);
+    //   setOkText("Далі");
+    // }
   };
+
+  useEffect(() => {
+    switch (currentStep) {
+      case 0:
+        setOkText("Додати адресу");
+        break;
+      case 1:
+        setOkText("Додати номер");
+        break;
+      case 2:
+        setOkText("Зробити замовлення");
+        break;
+      case 3:
+        sendOrderData();
+        setOkText("Опрацюваняя замовлення");
+        break;
+      case 4:
+        setOkText("Повернутись до продукту");
+        break;
+      default:
+        setCurrentStep(0);
+        setIsModalOpen(false);
+    }
+  }, [currentStep]);
 
   const handleCancel = () => {
     if (currentStep < 3 && currentStep > 0) {
@@ -215,7 +243,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
             <Text>{`Ціна до сплати на відділенні(+комісія пошти): 1799грн`}</Text> */}
           </Space>
         );
-      case 3:
+      case 4:
         return (
           <Result
             status="success"
@@ -228,6 +256,44 @@ const OrderModal: React.FC<OrderModalProps> = ({
             //   <Button key="buy">Buy Again</Button>,
             // ]}
           />
+        );
+      case 3:
+        return (
+          <>
+            <Skeleton />
+            {/* <Divider /> */}
+            {/* <Form layout="inline" style={{ margin: "16px 0" }}>
+              <Space size={16} wrap>
+                <Form.Item label="Active">
+                  <Switch checked={active} onChange={handleActiveChange} />
+                </Form.Item>
+                <Form.Item label="Button and Input Block">
+                  <Switch checked={block} onChange={handleBlockChange} />
+                </Form.Item>
+                <Form.Item label="Size">
+                  <Radio.Group value={size} onChange={handleSizeChange}>
+                    <Radio.Button value="default">Default</Radio.Button>
+                    <Radio.Button value="large">Large</Radio.Button>
+                    <Radio.Button value="small">Small</Radio.Button>
+                  </Radio.Group>
+                </Form.Item>
+                <Form.Item label="Button Shape">
+                  <Radio.Group value={buttonShape} onChange={handleShapeButton}>
+                    <Radio.Button value="default">Default</Radio.Button>
+                    <Radio.Button value="square">Square</Radio.Button>
+                    <Radio.Button value="round">Round</Radio.Button>
+                    <Radio.Button value="circle">Circle</Radio.Button>
+                  </Radio.Group>
+                </Form.Item>
+                <Form.Item label="Avatar Shape">
+                  <Radio.Group value={avatarShape} onChange={handleAvatarShape}>
+                    <Radio.Button value="square">Square</Radio.Button>
+                    <Radio.Button value="circle">Circle</Radio.Button>
+                  </Radio.Group>
+                </Form.Item>
+              </Space>
+            </Form> */}
+          </>
         );
       default:
         return null;
@@ -265,15 +331,19 @@ const OrderModal: React.FC<OrderModalProps> = ({
   return (
     <Modal
       open={isModalOpen}
-      onOk={handleOk}
+      onOk={handleNext}
       onCancel={handleCancel}
       okText={okText}
       cancelText="Назад"
-      okButtonProps={{ size: "large", style: { background: "black" } }}
+      okButtonProps={{
+        size: "large",
+        style: { background: "black" },
+        loading: currentStep === 3,
+      }}
       cancelButtonProps={{
         size: "large",
         style: {
-          display: currentStep === 3 ? "none" : "inline-block",
+          display: currentStep === 4 ? "none" : "inline-block",
         },
       }}
     >
