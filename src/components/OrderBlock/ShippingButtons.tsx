@@ -13,9 +13,12 @@ const ShippingButtons: React.FC<ShippingButtonsProps> = ({
     <Row
       justify="space-around"
       align="middle"
-      style={{ maxWidth: "800px", margin: "0 auto" }}
+      style={{ maxWidth: "800px", width: "100%", margin: "0 auto" }}
     >
-      <Row justify="center" style={{ margin: "0.35rem" }}>
+      <Row
+        justify="center"
+        style={{ margin: "0.35rem 0", padding: "0 1rem", width: "100%" }}
+      >
         <Button
           type="default"
           size="large"
@@ -29,6 +32,7 @@ const ShippingButtons: React.FC<ShippingButtonsProps> = ({
             display: "flex",
             justifyContent: "center",
             height: "2.6rem",
+            width: "100%",
           }}
           icon={
             <Image
@@ -58,7 +62,10 @@ const ShippingButtons: React.FC<ShippingButtonsProps> = ({
           </p>
         </Button>
       </Row>
-      <Row justify="center" style={{ margin: "1.5rem" }}>
+      <Row
+        justify="center"
+        style={{ margin: "1.5rem 0", padding: "0 1rem", width: "100%" }}
+      >
         <Button
           type="default"
           size="large"
@@ -72,6 +79,7 @@ const ShippingButtons: React.FC<ShippingButtonsProps> = ({
             display: "flex",
             justifyContent: "center",
             height: "2.6rem",
+            width: "100%",
           }}
           icon={
             <Image
