@@ -80,7 +80,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
     const orderDetails = {
       product: `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
       name: `Замовник: ${name}`,
-      phone: `Номер телефону: ${phoneNumber}`,
+      phone: `Номер телефону: +380${phoneNumber}`,
       shipping: `Доставка: ${
         selectedShippingTab === "nova"
           ? `Нова Пошта - ${nova}`
@@ -194,7 +194,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
               dataSource={[
                 `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
                 `Замовник: ${name}`,
-                `Номер телефону: ${phoneNumber}`,
+                `Номер телефону: +380${phoneNumber}`,
                 `Доставка: ${
                   selectedShippingTab === "nova"
                     ? `Нова Пошта - ${nova}`
