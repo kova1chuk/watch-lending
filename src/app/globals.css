@@ -16,3 +16,8 @@
 body {
   scroll-behavior: smooth;
 }
+
+.ant-steps-item-active .ant-steps-item-icon {
+  background-color: black !important;
+  border-color: black !important;
+}

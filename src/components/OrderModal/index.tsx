@@ -13,6 +13,7 @@ import Image from "next/image";
 import LocationInfo from "../LocationInfo";
 import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
 import ShippingTabButtons from "./ShippingTabButtons";
+import TextArea from "antd/es/input/TextArea";
 
 interface OrderModalProps {
   isModalOpen: boolean;
@@ -26,6 +27,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
   setIsModalOpen,
 }) => {
   const [currentTab, setCurrentTab] = useState<"nova" | "ukr">("nova");
+  const [ukr, setUkr] = useState();
 
   const handleTabChange = (tab: "nova" | "ukr") => {
     setCurrentTab(tab);
@@ -46,7 +48,14 @@ const OrderModal: React.FC<OrderModalProps> = ({
     {
       key: "ukr",
       label: `Tab 2`,
-      children: `Content of Tab Pane 2`,
+      children: (
+        <TextArea
+          value={ukr}
+          onChange={(e) => setUkr(e.target.value)}
+          placeholder="Адреса на доставку Укрпоштою"
+          autoSize={{ minRows: 3, maxRows: 5 }}
+        />
+      ),
     },
   ];
 
