@@ -4,6 +4,7 @@ import Head from "next/head";
 import { Metadata } from "next";
 
 import "./globals.css";
+import Script from "next/script";
 
 // Initialize Scada font
 const scada = Scada({
@@ -50,8 +51,19 @@ export default function RootLayout({
         <title>{metadata.title as string}</title>
         {/* Add link tags for favicon and stylesheets */}
         <link rel="icon" href="./favicon.ico" sizes="any" />
+        {/* <!-- Google tag (gtag.js) --> */}
       </Head>
       <body className={scada.className} style={{ padding: 0, margin: 0 }}>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-NYKFRW502Z" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-NYKFRW502Z');
+        `}
+        </Script>
         {children}
       </body>
     </html>
