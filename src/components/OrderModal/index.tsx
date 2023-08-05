@@ -159,7 +159,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
       case 1:
         return (
           <div>
-            <label>Ім'я/Прізвище</label>
+            <label>Ім &ldquo;я/Прізвище</label>
             <Input
               style={{ marginBottom: "1rem" }}
               placeholder="Введіть ваше ім'я"
