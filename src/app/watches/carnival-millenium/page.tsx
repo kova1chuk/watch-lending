@@ -17,6 +17,7 @@ import Meta from "antd/es/card/Meta";
 import { advantagesData } from "./advantagesData";
 import { MainProps } from "@/types";
 import Link from "next/link";
+import ReviewWidget from "@/components/ReviewWidget";
 
 const responsive = {
   desktop: {
@@ -43,6 +44,69 @@ const mainProps: MainProps = {
     mainColor: "#274F9C",
   },
 };
+
+const reviews = [
+  {
+    id: 1,
+    rating: 5,
+    reviewText:
+      "Годинник Carnival Millenium - це втілення точності. Механізм працює на відмінно, а точний показ часу завжди важливий для мене. Дуже задоволений покупкою!",
+  },
+  {
+    id: 2,
+    rating: 4,
+    reviewText:
+      "Підкорився стильному дизайну і якості годинника. Виглядає елегантно та дорого, а вода йому не страшна. Раджу!",
+  },
+  {
+    id: 3,
+    rating: 5,
+    reviewText:
+      "Замовив годинник Carnival Millenium та був приємно вражений швидкою доставкою. Закладаючи його на руку, відчуваю найвищу якість!",
+  },
+  {
+    id: 4,
+    rating: 5,
+    reviewText:
+      "Неймовірна пропозиція - якість та ціна. Годинник виглядає дорого, але коштує відмінно. Все, що мені потрібно!",
+  },
+  {
+    id: 5,
+    rating: 4,
+    reviewText:
+      "Гарантія на 12 місяців додає впевненості у покупця. Годинник виглядає дуже стильно, але не відчувається таким надійним, як хотілося б.",
+  },
+  {
+    id: 6,
+    rating: 5,
+    reviewText:
+      "Прекрасний вибір для тих, хто цінує класичний дизайн та високу якість. Ремінець можна легко налаштувати під розмір зап'ястя, що дуже зручно.",
+  },
+  {
+    id: 7,
+    rating: 5,
+    reviewText:
+      "Годинник Carnival Millenium - це справжня витонченість. Японський механізм дарує точність, а стальний корпус - надійність.",
+  },
+  {
+    id: 8,
+    rating: 4,
+    reviewText:
+      "Швидка доставка - це завжди приємно. Годинник дійсно виглядає дорого і стильно. Тільки хотілося б трохи більше функціональності.",
+  },
+  {
+    id: 9,
+    rating: 5,
+    reviewText:
+      "Годинник з найкращою ціною та найвищою якістю - це те, що мені потрібно було. Рекомендую всім, хто цінує якість і стиль.",
+  },
+  {
+    id: 10,
+    rating: 4,
+    reviewText:
+      "Годинник Carnival Millenium точно відповідає опису. Ремінець дійсно зручний, але хотілося б, щоб було більше варіантів заміни.",
+  },
+];
 
 const WatchPage = () => {
   const [isOrderModalOpen, setOrderIsModalOpen] = useState(false);
@@ -165,6 +229,12 @@ const WatchPage = () => {
               />
             </Card> */}
             </Carousel>
+          </section>
+          <section style={{ maxWidth: "800px", margin: "1rem auto" }}>
+            <ReviewWidget
+              onSubmit={() => console.log("Submit review")}
+              reviews={reviews}
+            />
           </section>
         </section>
       </main>

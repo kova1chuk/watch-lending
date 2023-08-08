@@ -17,6 +17,7 @@ import Meta from "antd/es/card/Meta";
 import { advantagesData } from "./advantagesData";
 import { MainProps } from "@/types";
 import Link from "next/link";
+import ReviewWidget from "@/components/ReviewWidget";
 
 const responsive = {
   desktop: {
@@ -43,6 +44,69 @@ const mainProps: MainProps = {
     mainColor: "black",
   },
 };
+
+const reviews = [
+  {
+    id: 1,
+    rating: 5,
+    reviewText:
+      "Годинник Cheetah Mars Black - це справжній шедевр. Точний механізм дарує впевненість у правильному показі часу. Це дійсно якісний годинник за приємною ціною.",
+  },
+  {
+    id: 2,
+    rating: 4,
+    reviewText:
+      "Висока якість та елегантний дизайн - ось, що відзначає годинник Cheetah Mars Black. Надійний японський механізм додає надійності.",
+  },
+  {
+    id: 3,
+    rating: 5,
+    reviewText:
+      "Годинник ідеально підходить для практичних людей, які цінують багатофункціональність. Хронограф, секундомір та відображення дати - все що треба!",
+  },
+  {
+    id: 4,
+    rating: 5,
+    reviewText:
+      "Міцний корпус з нержавіючої сталі та водостійкість - ось надійний захист цього годинника. Дизайн також приємно вражає!",
+  },
+  {
+    id: 5,
+    rating: 4,
+    reviewText:
+      "Мінеральне скло з захистом від подряпин - дуже важлива деталь для мене. Ремінець зручний, але було б чудово мати більше варіантів заміни.",
+  },
+  {
+    id: 6,
+    rating: 5,
+    reviewText:
+      "Регульований сталевий ремінець забезпечує ідеальну посадку. Компактні габарити роблять його зручним для щоденного носіння.",
+  },
+  {
+    id: 7,
+    rating: 5,
+    reviewText:
+      "Завдяки можливості заміни ремінця, годинник завжди можна адаптувати під будь-яку подію. Я задоволений покупкою.",
+  },
+  {
+    id: 8,
+    rating: 4,
+    reviewText:
+      "Гарантія на 12 місяців - це додатковий аргумент у вигляді надійності. Годинник точний та стильний, але могло б бути трохи більше функціональності.",
+  },
+  {
+    id: 9,
+    rating: 5,
+    reviewText:
+      "Годинник Cheetah Mars Black - мій вибір через його стиль та якість. Японський механізм - це гарантія правильного ходу.",
+  },
+  {
+    id: 10,
+    rating: 4,
+    reviewText:
+      "Чудовий годинник зі змінним ремінцем, що дозволяє змінювати зовнішній вигляд. Я задоволений, але розмір трохи великий для жінок.",
+  },
+];
 
 const WatchPage = () => {
   const [isOrderModalOpen, setOrderIsModalOpen] = useState(false);
@@ -163,6 +227,12 @@ const WatchPage = () => {
               />
             </Card> */}
             </Carousel>
+          </section>
+          <section style={{ maxWidth: "800px", margin: "1rem auto" }}>
+            <ReviewWidget
+              onSubmit={() => console.log("Submit review")}
+              reviews={reviews}
+            />
           </section>
         </section>
       </main>
