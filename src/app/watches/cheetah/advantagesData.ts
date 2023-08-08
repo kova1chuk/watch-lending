@@ -1,8 +1,4 @@
-export interface AdvantageData {
-  image: string;
-  title: string;
-  description: string;
-}
+import { AdvantageData } from "@/components/DescriptionChessboard/types";
 
 export const advantagesData: AdvantageData[] = [
   {

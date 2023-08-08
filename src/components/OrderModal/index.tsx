@@ -24,11 +24,13 @@ import TextArea from "antd/es/input/TextArea";
 interface OrderModalProps {
   isModalOpen: boolean;
   setIsModalOpen: (isOpen: boolean) => void;
+  productTitle: string;
 }
 
 const OrderModal: React.FC<OrderModalProps> = ({
   isModalOpen,
   setIsModalOpen,
+  productTitle,
 }) => {
   const [selectedShippingTab, setSelectedShippingTab] = useState<
     "nova" | "ukr"
@@ -81,7 +83,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
     // setCurrentStep(4);
     console.log(selectedShippingTab, selectedShippingTab == "nova");
     const orderDetails = {
-      product: `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
+      product: `Продукт: ${productTitle}/Безкоштовна доставка/Подарункова упаковка`,
       name: `Замовник: ${name}`,
       phone: `Номер телефону: +380${phoneNumber}`,
       shipping: `Доставка: ${
@@ -220,7 +222,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
               // footer={<div>Footer</div>}
               bordered
               dataSource={[
-                `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
+                `Продукт: Годинник ${productTitle}/Безкоштовна доставка/Подарункова упаковка`,
                 `Замовник: ${name}`,
                 `Номер телефону: +380${phoneNumber}`,
                 `Доставка: ${

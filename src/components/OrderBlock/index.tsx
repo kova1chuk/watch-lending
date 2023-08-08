@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button, Card, Row, Space } from "antd";
 import { Scada } from "next/font/google";
 import ShippingButtons from "./ShippingButtons";
+import { MainProps } from "@/types";
 
 const scada = Scada({
   weight: "400",
@@ -17,6 +18,7 @@ const price = {
 
 interface PriceBlockProps {
   handleCreateOrder: () => void;
+  mainProps: MainProps;
 }
 
 const priceContainer: React.CSSProperties = {
@@ -27,8 +29,11 @@ const priceContainer: React.CSSProperties = {
   backgroundRepeat: "no-repeat",
 };
 
-const OrderBlock: React.FC<PriceBlockProps> = ({ handleCreateOrder }) => {
-  const { currency, amount, compareAmount } = price;
+const OrderBlock: React.FC<PriceBlockProps> = ({
+  handleCreateOrder,
+  mainProps,
+}) => {
+  // const { currency, amount, compareAmount } = price;
 
   return (
     <>
@@ -62,13 +67,20 @@ const OrderBlock: React.FC<PriceBlockProps> = ({ handleCreateOrder }) => {
             maxWidth: "300px",
           }}
         >
-          <h3>{currency}</h3>
-          <p>{amount.toFixed(2)}</p>
-          {compareAmount && compareAmount !== amount && (
-            <p>
-              <del>{compareAmount.toFixed(2)}</del>
-            </p>
-          )}
+          <h3>Грн</h3>
+          <p>{mainProps.price.toFixed(2)}</p>
+          {mainProps.comparePrice &&
+            mainProps.comparePrice !== mainProps.price && (
+              <p
+              // style={{
+              //   backgroundColor: "#3498db",
+              //   position: "relative",
+              //   transform: "perspective(400px) rotateX(70deg) rotateY(10deg)",
+              // }}
+              >
+                <del>{mainProps.comparePrice.toFixed(2)}</del>
+              </p>
+            )}
         </div>
 
         <Space>
