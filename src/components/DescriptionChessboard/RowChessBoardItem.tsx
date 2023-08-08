@@ -2,7 +2,7 @@ import React from "react";
 import { Row } from "antd";
 import DescriptionBox from "./DescriptionBox"; // Update the path to DescriptionBox component
 import ImageBox from "./ImageBox"; // Update the path to ImageBox component
-import { AdvantageData } from "./advantagesData";
+import { AdvantageData } from "./types";
 
 interface RowChessBoardItemProps {
   index: number;
