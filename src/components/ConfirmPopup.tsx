@@ -15,6 +15,7 @@ const ConfirmPopup = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <Modal
       title="Basic Modal"

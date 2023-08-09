@@ -52,6 +52,7 @@ export async function callNovaPoshtaGetStreetsAPI(
     }
 
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error("Error calling Nova Poshta API:", error);

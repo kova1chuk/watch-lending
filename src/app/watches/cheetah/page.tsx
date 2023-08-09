@@ -1,23 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Carousel from "react-multi-carousel";
+import { Card } from "antd";
+import Meta from "antd/es/card/Meta";
+import Link from "next/link";
+import Image from "next/image";
 
 import Chessboard from "@/components/DescriptionChessboard";
 import OrderBlock from "@/components/OrderBlock";
 import Footer from "@/components/Footer";
 import MainBannerCarousel from "@/components/MainBanner";
 import Advantages from "@/components/Advantages";
-import OrderModal from "@/components/OrderModal";
+// eslint-disable-next-line import/order
+import { OrderModal } from "@/components";
 
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Card } from "antd";
-import Meta from "antd/es/card/Meta";
+
+import { MainProps } from "@/types";
+import ReviewWidget from "@/components/ReviewWidget";
 
 import { advantagesData } from "./data";
-import { MainProps } from "@/types";
-import Link from "next/link";
-import ReviewWidget from "@/components/ReviewWidget";
 
 const responsive = {
   desktop: {
@@ -152,7 +155,7 @@ const WatchPage = () => {
                   hoverable
                   style={{}}
                   cover={
-                    <img
+                    <Image
                       alt="example"
                       src="https://best-time.biz/image/cache/catalog/02-03-2018/25-08/forsiningwalkersteel5q-590x590.jpg"
                     />
@@ -169,7 +172,7 @@ const WatchPage = () => {
                   hoverable
                   style={{ width: 240 }}
                   cover={
-                    <img
+                    <Image
                       alt="example"
                       src="https://best-time.biz/image/cache/catalog/01-02/23-01/carnivalmillenium9a-590x590.jpg"
                     />

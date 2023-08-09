@@ -1,6 +1,7 @@
 import React from "react";
 import { Col } from "antd";
 import Image from "next/image";
+
 import { AdvantageData } from "./types";
 
 const ImageBox: React.FC<{ advantage: AdvantageData }> = ({ advantage }) => {

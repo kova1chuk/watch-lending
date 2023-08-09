@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import CollapseChessBoardItem from "./CollapseChessBoardItem";
 import RowChessBoardItem from "./RowChessBoardItem";
 import { AdvantageData } from "./types";
@@ -18,6 +19,7 @@ const DescriptionChessboard = ({
   useEffect(() => {
     handleWindowResize(); // Check the initial width
     window.addEventListener("resize", handleWindowResize);
+
     return () => {
       // Clean up the event listener on component unmount
       window.removeEventListener("resize", handleWindowResize);

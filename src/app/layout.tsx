@@ -2,7 +2,6 @@ import React from "react";
 import { Scada } from "next/font/google";
 import Head from "next/head";
 import { Metadata } from "next";
-
 import "./globals.css";
 import Script from "next/script";
 

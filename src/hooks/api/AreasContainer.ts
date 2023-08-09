@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { fetchAreas } from "@/api"; // Import the AreaData type from your API file
 import { SettlementAreaData } from "@/api/novaPoshtaGetAreasAPI";
 

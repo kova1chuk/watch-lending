@@ -3,6 +3,7 @@ import { Card, Space } from "antd";
 import Link from "next/link";
 import Carousel, { ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Image from "next/image";
 
 const { Meta } = Card;
 
@@ -53,7 +54,7 @@ const OtherProducts: React.FC<OtherProductsProps> = ({ otherProducts }) => {
             <Card
               hoverable
               style={{ width: 240 }}
-              cover={<img alt={product.title} src={product.imageUrl} />}
+              cover={<Image alt={product.title} src={product.imageUrl} />}
             >
               <Meta title={product.title} description={product.description} />
             </Card>

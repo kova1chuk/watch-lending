@@ -16,10 +16,12 @@ import {
 } from "antd";
 import { DotChartOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import LocationInfo from "../LocationInfo";
-import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
-import ShippingTabButtons from "./ShippingTabButtons";
 import TextArea from "antd/es/input/TextArea";
+
+import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
+
+import LocationInfo from "../LocationInfo";
+import ShippingTabButtons from "./ShippingTabButtons";
 
 interface OrderModalProps {
   isModalOpen: boolean;
@@ -79,6 +81,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
     },
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const sendOrderData = async () => {
     // setCurrentStep(4);
     console.log(selectedShippingTab, selectedShippingTab == "nova");
@@ -156,7 +159,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
         setCurrentStep(0);
         setIsModalOpen(false);
     }
-  }, [currentStep]);
+  }, [currentStep, sendOrderData, setIsModalOpen]);
 
   const handleCancel = () => {
     if (currentStep < 3 && currentStep > 0) {
@@ -327,6 +330,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
         </>
       );
     }
+
     return null;
   };
 

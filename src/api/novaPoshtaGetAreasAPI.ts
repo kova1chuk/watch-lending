@@ -47,6 +47,7 @@ export async function callNovaPoshtaGetSettlementAreasAPI(
 
     const data = await response.json();
     console.log("settlementAreasResp", data);
+
     return data;
   } catch (error) {
     console.error("Error calling Nova Poshta API:", error);

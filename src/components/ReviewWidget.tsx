@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Rate, Input, Button, Upload, List, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { RcFile } from "antd/lib/upload";
+import Image from "next/image";
 
 const { TextArea } = Input;
 
@@ -96,7 +97,7 @@ const ReviewWidget: React.FC<ReviewWidgetProps> = ({ onSubmit, reviews }) => {
                 <p>{item.reviewText}</p>
                 {item.images &&
                   item.images.map((image, index) => (
-                    <img
+                    <Image
                       key={index}
                       src={URL.createObjectURL(image)}
                       alt={`Review Image ${index}`}

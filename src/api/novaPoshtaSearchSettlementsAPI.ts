@@ -62,6 +62,7 @@ export async function callNovaPoshtaSearchSettlementsAPI(methodProperties: {
     });
 
     const responseData = await response.json();
+
     return responseData;
   } catch (error) {
     console.error("Error calling Nova Poshta API:", error);

@@ -2,8 +2,10 @@ import React from "react";
 import Image from "next/image";
 import { Button, Card, Row, Space } from "antd";
 import { Scada } from "next/font/google";
-import ShippingButtons from "./ShippingButtons";
+
 import { MainProps } from "@/types";
+
+import ShippingButtons from "./ShippingButtons";
 
 const scada = Scada({
   weight: "400",

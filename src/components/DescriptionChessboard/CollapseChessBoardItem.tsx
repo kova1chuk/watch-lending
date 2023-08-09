@@ -1,5 +1,6 @@
 import React from "react";
 import { Collapse, Divider } from "antd";
+
 import ImageBox from "./ImageBox"; // Update the path to ImageBox component
 import { AdvantageData } from "./types";
 

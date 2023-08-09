@@ -1,9 +1,10 @@
 import { Button, Carousel, Rate } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Scada } from "next/font/google";
+
 import TopBannerCarousel from "./TopBannerCarousel";
 import WatchCharacteristics from "./WatchCharacteristics";
-import { Scada } from "next/font/google";
 import Banner from "./Banner";
 
 interface Props {
@@ -30,6 +31,7 @@ const MainBannerCarousel: React.FC<Props> = ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
+
   return (
     <div id="banner-carousel" style={{ ...bannerContainer }}>
       <TopBannerCarousel slogan={topSlogan} mainColor={mainColor} />
