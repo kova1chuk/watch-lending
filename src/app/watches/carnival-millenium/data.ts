@@ -1,4 +1,18 @@
 import { AdvantageData } from "@/components/DescriptionChessboard/types";
+import { MainProps } from "@/types";
+
+export const mainProps: MainProps = {
+  mainImage: "/assets/img/carnival-millenium/carnival-millenium-4.webp",
+  backgroundBlurImage: "/assets/img/carnival-millenium/background-blur.webp",
+  price: 3999,
+  comparePrice: 4999,
+  sale: 25,
+  productTitle: "Carnival Milenium",
+  topSlogan: "Нескінченна витонченість від Carnival.",
+  styles: {
+    mainColor: "#274F9C",
+  },
+};
 
 export const advantagesData: AdvantageData[] = [
   {
@@ -60,5 +74,83 @@ export const advantagesData: AdvantageData[] = [
     title: "Гарантія на 12 місяців",
     description:
       "Годинник Carnival Millenium поставляється з гарантією на 12 місяців, гарантуючи надійність та якість його роботи протягом цього періоду.",
+  },
+];
+
+export const otherProductsData = [
+  {
+    slug: "carnival-millenium",
+    title: "Carnival Millenium",
+    description: "Stylish watch with modern design.",
+    imageUrl: "https://example.com/carnival-millenium.jpg",
+  },
+  {
+    slug: "cheetah-black",
+    title: "Cheetah",
+    description: "Sleek and elegant timepiece.",
+    imageUrl: "https://example.com/cheetah.jpg",
+  },
+];
+
+export const reviews = [
+  {
+    id: 1,
+    rating: 5,
+    reviewText:
+      "Годинник Carnival Millenium - це втілення точності. Механізм працює на відмінно, а точний показ часу завжди важливий для мене. Дуже задоволений покупкою!",
+  },
+  {
+    id: 2,
+    rating: 4,
+    reviewText:
+      "Підкорився стильному дизайну і якості годинника. Виглядає елегантно та дорого, а вода йому не страшна. Раджу!",
+  },
+  {
+    id: 3,
+    rating: 5,
+    reviewText:
+      "Замовив годинник Carnival Millenium та був приємно вражений швидкою доставкою. Закладаючи його на руку, відчуваю найвищу якість!",
+  },
+  {
+    id: 4,
+    rating: 5,
+    reviewText:
+      "Неймовірна пропозиція - якість та ціна. Годинник виглядає дорого, але коштує відмінно. Все, що мені потрібно!",
+  },
+  {
+    id: 5,
+    rating: 4,
+    reviewText:
+      "Гарантія на 12 місяців додає впевненості у покупця. Годинник виглядає дуже стильно, але не відчувається таким надійним, як хотілося б.",
+  },
+  {
+    id: 6,
+    rating: 5,
+    reviewText:
+      "Прекрасний вибір для тих, хто цінує класичний дизайн та високу якість. Ремінець можна легко налаштувати під розмір зап'ястя, що дуже зручно.",
+  },
+  {
+    id: 7,
+    rating: 5,
+    reviewText:
+      "Годинник Carnival Millenium - це справжня витонченість. Японський механізм дарує точність, а стальний корпус - надійність.",
+  },
+  {
+    id: 8,
+    rating: 4,
+    reviewText:
+      "Швидка доставка - це завжди приємно. Годинник дійсно виглядає дорого і стильно. Тільки хотілося б трохи більше функціональності.",
+  },
+  {
+    id: 9,
+    rating: 5,
+    reviewText:
+      "Годинник з найкращою ціною та найвищою якістю - це те, що мені потрібно було. Рекомендую всім, хто цінує якість і стиль.",
+  },
+  {
+    id: 10,
+    rating: 4,
+    reviewText:
+      "Годинник Carnival Millenium точно відповідає опису. Ремінець дійсно зручний, але хотілося б, щоб було більше варіантів заміни.",
   },
 ];
