@@ -14,7 +14,7 @@ import "react-multi-carousel/lib/styles.css";
 import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 
-import { advantagesData } from "./advantagesData";
+import { advantagesData } from "./data";
 import { MainProps } from "@/types";
 import Link from "next/link";
 import ReviewWidget from "@/components/ReviewWidget";
