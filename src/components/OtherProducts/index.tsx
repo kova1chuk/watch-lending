@@ -53,7 +53,15 @@ const OtherProducts: React.FC<OtherProductsProps> = ({ otherProducts }) => {
               hoverable
               style={{ width: 240 }}
               cover={
-                <Image alt={product.title} src={product.imageUrl} fill={true} />
+                <Image
+                  alt={product.title}
+                  src={product.imageUrl}
+                  // fill={true}
+                  // style={{ borderRadius: "1.5rem" }}
+                  width={400} // Adjust the width of the image as per your requirements
+                  height={300} // Adjust the height of the image as per your requirements
+                  layout="responsive" // Use responsive layout to maintain aspect ratio
+                />
               }
             >
               <Meta title={product.title} description={product.description} />
