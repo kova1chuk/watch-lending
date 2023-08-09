@@ -49,17 +49,62 @@ const OtherProducts: React.FC<OtherProductsProps> = ({ otherProducts }) => {
       <Space>
         {otherProducts.map((product) => (
           <Link href={`/watches/${product.slug}`} key={product.slug}>
-            {" "}
-            {/* Change href to use product.slug */}
             <Card
               hoverable
               style={{ width: 240 }}
-              cover={<Image alt={product.title} src={product.imageUrl} />}
+              cover={
+                <Image alt={product.title} src={product.imageUrl} fill={true} />
+              }
             >
               <Meta title={product.title} description={product.description} />
             </Card>
           </Link>
         ))}
+        {/* <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://best-time.biz/image/cache/catalog/01-04-2019/29-04/paganidesignzurick10bar5a-590x590.jpg"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://best-time.biz/image/cache/catalog/01-04-2019/29-04/benyarautomatic10bar1-590x590.jpg"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://best-time.biz/image/cache/catalog/01-06-2017/03-08/1627748870210-590x590.jpg"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card> */}
       </Space>
     </Carousel>
   );

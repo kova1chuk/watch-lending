@@ -1,5 +1,4 @@
-import { AdvantageData } from "@/components/DescriptionChessboard/types";
-import { MainProps } from "@/types";
+import { Advantage, MainProps, OtherProduct, Review } from "@/types";
 
 export const mainProps: MainProps = {
   mainImage: "/assets/img/carnival-millenium/carnival-millenium-4.webp",
@@ -14,7 +13,7 @@ export const mainProps: MainProps = {
   },
 };
 
-export const advantagesData: AdvantageData[] = [
+export const advantagesData: Advantage[] = [
   {
     image: "/assets/img/carnival-millenium/carnival-millenium-1.webp",
     title: "Строгий класичний дизайн",
@@ -77,22 +76,22 @@ export const advantagesData: AdvantageData[] = [
   },
 ];
 
-export const otherProductsData = [
+export const otherProductsData: OtherProduct[] = [
   {
     slug: "carnival-millenium",
     title: "Carnival Millenium",
     description: "Stylish watch with modern design.",
-    imageUrl: "https://example.com/carnival-millenium.jpg",
+    imageUrl: "/assets/img/carnival-millenium/carnival-millenium-4.webp",
   },
   {
     slug: "cheetah-black",
     title: "Cheetah",
     description: "Sleek and elegant timepiece.",
-    imageUrl: "https://example.com/cheetah.jpg",
+    imageUrl: "/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp",
   },
 ];
 
-export const reviews = [
+export const reviewsData: Review[] = [
   {
     id: 1,
     rating: 5,

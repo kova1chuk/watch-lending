@@ -101,6 +101,7 @@ const ReviewWidget: React.FC<ReviewWidgetProps> = ({ onSubmit, reviews }) => {
                       key={index}
                       src={URL.createObjectURL(image)}
                       alt={`Review Image ${index}`}
+                      fill={true}
                     />
                   ))}
               </div>

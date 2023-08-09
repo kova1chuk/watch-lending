@@ -12,11 +12,10 @@ import {
   ReviewWidget,
   Footer,
 } from "@/components";
+import data, { WatchesSlugs } from "@/data";
 
-import { advantagesData, mainProps, otherProductsData, reviews } from "./data";
-
-const WatchPage = () => {
-  const [isOrderModalOpen, setOrderIsModalOpen] = useState(false);
+const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
+  const [isOrderModalOpen, setOrderIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // ping bot
@@ -29,31 +28,35 @@ const WatchPage = () => {
     });
   }, []);
 
+  if (!params.slug || !data[params.slug]) return { notFound: true };
+
+  const { main, advantages, otherProducts, reviews } = data[params.slug];
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <main>
         <section style={{ maxWidth: "1440px", margin: "0 auto" }}>
           <MainBannerCarousel
-            mainImage={mainProps.mainImage}
-            backgroundBlurImage={mainProps.backgroundBlurImage}
-            topSlogan={mainProps.topSlogan}
-            mainColor={mainProps.styles.mainColor}
-            sale={mainProps.sale}
-            price={mainProps.price}
+            mainImage={main.mainImage}
+            backgroundBlurImage={main.backgroundBlurImage}
+            topSlogan={main.topSlogan}
+            mainColor={main.styles.mainColor}
+            sale={main.sale}
+            price={main.price}
           />
-          <Chessboard advantagesData={advantagesData} />
+          <Chessboard advantagesData={advantages} />
           <Advantages />
           <OrderBlock
             handleCreateOrder={() => setOrderIsModalOpen(true)}
-            mainProps={mainProps}
+            mainProps={main}
           />
           <OrderModal
             isModalOpen={isOrderModalOpen}
             setIsModalOpen={setOrderIsModalOpen}
-            productTitle={mainProps.productTitle}
+            productTitle={main.productTitle}
           />
           <section style={{ maxWidth: "800px", margin: "1.5rem auto" }}>
-            <OtherProducts otherProducts={otherProductsData} />
+            <OtherProducts otherProducts={otherProducts} />
           </section>
           <section style={{ maxWidth: "800px", margin: "1rem auto" }}>
             <ReviewWidget
