@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Modal, Result } from "antd";
 import React, { useState } from "react";
 

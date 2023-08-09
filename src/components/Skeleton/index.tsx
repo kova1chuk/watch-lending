@@ -1,3 +1,5 @@
+"use client";
+
 import { DotChartOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import { Space } from "antd";

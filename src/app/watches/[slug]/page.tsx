@@ -1,18 +1,37 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
-import {
-  MainBannerCarousel,
-  Chessboard,
-  Advantages,
-  OrderBlock,
-  OrderModal,
-  OtherProducts,
-  ReviewWidget,
-  Footer,
-} from "@/components";
 import data, { WatchesSlugs } from "@/data";
+
+const MainBanner = dynamic(() => import("@/components/MainBanner"), {
+  loading: () => <p>Loading...</p>,
+});
+const DescriptionChessboard = dynamic(
+  () => import("@/components/DescriptionChessboard"),
+  {
+    loading: () => <p>Loading...</p>,
+  }
+);
+const Advantages = dynamic(() => import("@/components/Advantages"), {
+  loading: () => <p>Loading...</p>,
+});
+const OrderBlock = dynamic(() => import("@/components/OrderBlock"), {
+  loading: () => <p>Loading...</p>,
+});
+const OrderModal = dynamic(() => import("@/components/OrderModal"), {
+  loading: () => <p>Loading...</p>,
+});
+const OtherProducts = dynamic(() => import("@/components/OtherProducts"), {
+  loading: () => <p>Loading...</p>,
+});
+const ReviewWidget = dynamic(() => import("@/components/ReviewWidget"), {
+  loading: () => <p>Loading...</p>,
+});
+const Footer = dynamic(async () => (await import("@/components")).Footer, {
+  loading: () => <p>Loading...</p>,
+});
 
 const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
   const [isOrderModalOpen, setOrderIsModalOpen] = useState<boolean>(false);
@@ -26,6 +45,8 @@ const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
         "Content-Type": "application/json",
       },
     });
+
+    // const data = await import('fuse.js')
   }, []);
 
   if (!params.slug || !data[params.slug]) return { notFound: true };
@@ -36,7 +57,7 @@ const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
     <div style={{ overflowX: "hidden" }}>
       <main>
         <section style={{ maxWidth: "1440px", margin: "0 auto" }}>
-          <MainBannerCarousel
+          <MainBanner
             mainImage={main.mainImage}
             backgroundBlurImage={main.backgroundBlurImage}
             topSlogan={main.topSlogan}
@@ -44,7 +65,7 @@ const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
             sale={main.sale}
             price={main.price}
           />
-          <Chessboard advantagesData={advantages} />
+          <DescriptionChessboard advantagesData={advantages} />
           <Advantages />
           <OrderBlock
             handleCreateOrder={() => setOrderIsModalOpen(true)}

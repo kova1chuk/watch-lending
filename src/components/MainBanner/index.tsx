@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Carousel, Rate } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";

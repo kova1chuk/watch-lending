@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Card, Space } from "antd";
 import Link from "next/link";

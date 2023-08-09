@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Rate, Input, Button, Upload, List, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
