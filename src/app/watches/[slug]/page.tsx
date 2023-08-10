@@ -75,6 +75,7 @@ const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
             isModalOpen={isOrderModalOpen}
             setIsModalOpen={setOrderIsModalOpen}
             productTitle={main.productTitle}
+            productPrice={main.price}
           />
           <section style={{ maxWidth: "800px", margin: "1.5rem auto" }}>
             <OtherProducts otherProducts={otherProducts} />

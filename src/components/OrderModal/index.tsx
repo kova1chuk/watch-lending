@@ -29,12 +29,14 @@ interface OrderModalProps {
   isModalOpen: boolean;
   setIsModalOpen: (isOpen: boolean) => void;
   productTitle: string;
+  productPrice: number;
 }
 
 const OrderModal: React.FC<OrderModalProps> = ({
   isModalOpen,
   setIsModalOpen,
   productTitle,
+  productPrice,
 }) => {
   const [selectedShippingTab, setSelectedShippingTab] = useState<
     "nova" | "ukr"
@@ -97,7 +99,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
           ? `Нова Пошта - ${nova}`
           : `Укрпошта - ${ukr}`
       }`,
-      price: `1799грн`,
+      price: productPrice,
     };
 
     const webhookUrl = `${process.env.NEXT_PUBLIC_TG_BOT_URL}/order`; // Replace with your webhook URL
@@ -239,7 +241,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
                     ? `Нова Пошта - ${nova}`
                     : `Укрпошта - ${ukr}`
                 }`,
-                `Ціна до сплати на відділенні(+комісія пошти): 1799грн`,
+                `Ціна до сплати на відділенні(+комісія пошти): ${productPrice}грн`,
               ]}
               renderItem={(item: string) => <List.Item>{item}</List.Item>}
             />
