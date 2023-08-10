@@ -89,6 +89,13 @@ export const otherProductsData: OtherProduct[] = [
     description: "Sleek and elegant timepiece.",
     imageUrl: "/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp",
   },
+  {
+    slug: "forsining-walker-steel",
+    title: "forsining-walker-steel",
+    description: "Sleek and elegant timepiece.",
+    imageUrl:
+      "/assets/img/forsining-walker-steel/forsining-walker-steel-4.webp",
+  },
 ];
 
 export const reviewsData: Review[] = [

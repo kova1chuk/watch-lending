@@ -12,8 +12,17 @@ import {
   otherProductsData as otherProductsCarnivalMillenium,
   reviewsData as reviewsCarnivalMillenium,
 } from "./carnival-millenium";
+import {
+  mainProps as mainPropsForsiningWalkerSteel,
+  advantagesData as advantagesForsiningWalkerSteel,
+  otherProductsData as otherProductsForsiningWalkerSteel,
+  reviewsData as reviewsForsiningWalkerSteel,
+} from "./forsining-walker-steel";
 
-export type WatchesSlugs = "cheetah-black" | "carnival-millenium";
+export type WatchesSlugs =
+  | "cheetah-black"
+  | "carnival-millenium"
+  | "forsining-walker-steel";
 
 export type WatchData = {
   [slug in WatchesSlugs]: {
@@ -36,6 +45,12 @@ const data: WatchData = {
     advantages: advantagesCarnivalMillenium,
     otherProducts: otherProductsCarnivalMillenium,
     reviews: reviewsCarnivalMillenium,
+  },
+  "forsining-walker-steel": {
+    main: mainPropsForsiningWalkerSteel,
+    advantages: advantagesForsiningWalkerSteel,
+    otherProducts: otherProductsForsiningWalkerSteel,
+    reviews: reviewsForsiningWalkerSteel,
   },
 };
 
