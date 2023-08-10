@@ -45,6 +45,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
   const [phoneNumber, setPhoneNumber] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
   const [okText, setOkText] = useState("Далі");
+  const [okId, setOkId] = useState("");
 
   const handleTabChange = (tab: "nova" | "ukr") => {
     setSelectedShippingTab(tab);
@@ -140,6 +141,9 @@ const OrderModal: React.FC<OrderModalProps> = ({
   };
 
   useEffect(() => {
+    if (currentStep === 2) setOkId("make-order");
+    else setOkId("");
+
     switch (currentStep) {
       case 0:
         setOkText("Додати адресу");
@@ -344,6 +348,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
       okText={okText}
       cancelText="Назад"
       okButtonProps={{
+        id: okId,
         size: "large",
         style: { background: "black" },
         loading: currentStep === 3,
