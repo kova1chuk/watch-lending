@@ -1,10 +1,19 @@
-export interface AdvantageData {
-  image: string;
-  title: string;
-  description: string;
-}
+import { Advantage, MainProps, OtherProduct, Review } from "@/types";
 
-export const advantagesData: AdvantageData[] = [
+export const mainProps: MainProps = {
+  mainImage: "/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp",
+  backgroundBlurImage: "/assets/img/background/blur.webp",
+  price: 1799,
+  comparePrice: 2999,
+  sale: 35,
+  productTitle: "Cheetah Black",
+  topSlogan: "Нескінченна витонченість від Carnival.",
+  styles: {
+    mainColor: "black",
+  },
+};
+
+export const advantagesData: Advantage[] = [
   {
     image: "/assets/img/cheetah-mars-black/cheetah-mars-black-7.webp",
     title: "Елегантний дизайн",
@@ -64,5 +73,90 @@ export const advantagesData: AdvantageData[] = [
     title: "Гарантія на 12 місяців",
     description:
       "Годинник Cheetah Mars Black поставляється з гарантією на 12 місяців, що гарантує якість та надійність продукту та задоволення від його використання.",
+  },
+];
+
+export const otherProductsData: OtherProduct[] = [
+  {
+    slug: "carnival-millenium",
+    title: "Carnival Millenium",
+    description: "Stylish watch with modern design.",
+    imageUrl: "/assets/img/carnival-millenium/carnival-millenium-4.webp",
+  },
+  {
+    slug: "cheetah-black",
+    title: "Cheetah",
+    description: "Sleek and elegant timepiece.",
+    imageUrl: "/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp",
+  },
+  {
+    slug: "forsining-walker-steel",
+    title: "forsining-walker-steel",
+    description: "Sleek and elegant timepiece.",
+    imageUrl:
+      "/assets/img/forsining-walker-steel/forsining-walker-steel-4.webp",
+  },
+];
+
+export const reviewsData: Review[] = [
+  {
+    id: 1,
+    rating: 5,
+    reviewText:
+      "Годинник Cheetah Mars Black - це справжній шедевр. Точний механізм дарує впевненість у правильному показі часу. Це дійсно якісний годинник за приємною ціною.",
+  },
+  {
+    id: 2,
+    rating: 4,
+    reviewText:
+      "Висока якість та елегантний дизайн - ось, що відзначає годинник Cheetah Mars Black. Надійний японський механізм додає надійності.",
+  },
+  {
+    id: 3,
+    rating: 5,
+    reviewText:
+      "Годинник ідеально підходить для практичних людей, які цінують багатофункціональність. Хронограф, секундомір та відображення дати - все що треба!",
+  },
+  {
+    id: 4,
+    rating: 5,
+    reviewText:
+      "Міцний корпус з нержавіючої сталі та водостійкість - ось надійний захист цього годинника. Дизайн також приємно вражає!",
+  },
+  {
+    id: 5,
+    rating: 4,
+    reviewText:
+      "Мінеральне скло з захистом від подряпин - дуже важлива деталь для мене. Ремінець зручний, але було б чудово мати більше варіантів заміни.",
+  },
+  {
+    id: 6,
+    rating: 5,
+    reviewText:
+      "Регульований сталевий ремінець забезпечує ідеальну посадку. Компактні габарити роблять його зручним для щоденного носіння.",
+  },
+  {
+    id: 7,
+    rating: 5,
+    reviewText:
+      "Завдяки можливості заміни ремінця, годинник завжди можна адаптувати під будь-яку подію. Я задоволений покупкою.",
+  },
+  {
+    id: 8,
+    rating: 4,
+    reviewText:
+      "Гарантія на 12 місяців - це додатковий аргумент у вигляді надійності. Годинник точний та стильний, але могло б бути трохи більше функціональності.",
+  },
+  {
+    id: 9,
+    rating: 5,
+    reviewText:
+      "Годинник Cheetah Mars Black - мій вибір через його стиль та якість. Японський механізм - це гарантія правильного ходу.",
+  },
+  {
+    id: 10,
+    rating: 4,
+    reviewText:
+      "Чудовий годинник зі змінним ремінцем, що дозволяє змінювати зовнішній вигляд. Я задоволений, але розмір трохи великий для жінок.",
   },
 ];

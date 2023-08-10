@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Col, Typography, List, Badge, Card } from "antd";
 

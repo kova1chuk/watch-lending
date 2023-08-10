@@ -2,9 +2,12 @@ import { Carousel } from "antd";
 import React from "react";
 import Image from "next/image";
 
-interface Props {}
+interface Props {
+  slogan: string;
+  mainColor: string;
+}
 
-const TopBannerCarousel: React.FC<Props> = () => {
+const TopBannerCarousel: React.FC<Props> = ({ slogan, mainColor }) => {
   return (
     // <Carousel effect="fade">
     <div>
@@ -15,6 +18,7 @@ const TopBannerCarousel: React.FC<Props> = () => {
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
+          backgroundColor: mainColor,
         }}
       >
         <Image
@@ -36,8 +40,9 @@ const TopBannerCarousel: React.FC<Props> = () => {
             margin: "0 2rem",
           }}
         >
-          Вічна елегантність у кожному моменті -<br />
-          годинник Сheetah Elegent
+          {/* Вічна елегантність у кожному моменті -<br />
+          годинник Сheetah Elegent */}
+          {slogan}
         </p>
       </div>
     </div>

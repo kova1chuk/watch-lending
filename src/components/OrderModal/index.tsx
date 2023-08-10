@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import {
   Button,
@@ -16,19 +18,23 @@ import {
 } from "antd";
 import { DotChartOutlined } from "@ant-design/icons";
 import Image from "next/image";
-import LocationInfo from "../LocationInfo";
-import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
-import ShippingTabButtons from "./ShippingTabButtons";
 import TextArea from "antd/es/input/TextArea";
+
+import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
+
+import LocationInfo from "../LocationInfo";
+import ShippingTabButtons from "./ShippingTabButtons";
 
 interface OrderModalProps {
   isModalOpen: boolean;
   setIsModalOpen: (isOpen: boolean) => void;
+  productTitle: string;
 }
 
 const OrderModal: React.FC<OrderModalProps> = ({
   isModalOpen,
   setIsModalOpen,
+  productTitle,
 }) => {
   const [selectedShippingTab, setSelectedShippingTab] = useState<
     "nova" | "ukr"
@@ -39,6 +45,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
   const [phoneNumber, setPhoneNumber] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
   const [okText, setOkText] = useState("Далі");
+  const [okId, setOkId] = useState("");
 
   const handleTabChange = (tab: "nova" | "ukr") => {
     setSelectedShippingTab(tab);
@@ -77,11 +84,12 @@ const OrderModal: React.FC<OrderModalProps> = ({
     },
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const sendOrderData = async () => {
     // setCurrentStep(4);
     console.log(selectedShippingTab, selectedShippingTab == "nova");
     const orderDetails = {
-      product: `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
+      product: `Продукт: ${productTitle}/Безкоштовна доставка/Подарункова упаковка`,
       name: `Замовник: ${name}`,
       phone: `Номер телефону: +380${phoneNumber}`,
       shipping: `Доставка: ${
@@ -133,6 +141,9 @@ const OrderModal: React.FC<OrderModalProps> = ({
   };
 
   useEffect(() => {
+    if (currentStep === 2) setOkId("make-order");
+    else setOkId("");
+
     switch (currentStep) {
       case 0:
         setOkText("Додати адресу");
@@ -154,7 +165,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
         setCurrentStep(0);
         setIsModalOpen(false);
     }
-  }, [currentStep]);
+  }, [currentStep, sendOrderData, setIsModalOpen]);
 
   const handleCancel = () => {
     if (currentStep < 3 && currentStep > 0) {
@@ -220,7 +231,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
               // footer={<div>Footer</div>}
               bordered
               dataSource={[
-                `Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`,
+                `Продукт: Годинник ${productTitle}/Безкоштовна доставка/Подарункова упаковка`,
                 `Замовник: ${name}`,
                 `Номер телефону: +380${phoneNumber}`,
                 `Доставка: ${
@@ -325,6 +336,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
         </>
       );
     }
+
     return null;
   };
 
@@ -336,6 +348,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
       okText={okText}
       cancelText="Назад"
       okButtonProps={{
+        id: okId,
         size: "large",
         style: { background: "black" },
         loading: currentStep === 3,

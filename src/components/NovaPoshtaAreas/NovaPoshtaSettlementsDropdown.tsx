@@ -1,6 +1,7 @@
 import React from "react";
-import { SettlementData } from "@/api/novaPoshtaGetSettlementsAPI";
 import { AutoComplete, Input } from "antd";
+
+import { SettlementData } from "@/api/novaPoshtaGetSettlementsAPI";
 import { NovaPostSearchSetelmentsAddress } from "@/api/novaPoshtaSearchSettlementsAPI";
 
 interface NovaPoshtaSettlementsDropdownProps {

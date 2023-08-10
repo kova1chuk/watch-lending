@@ -1,9 +1,16 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
+
 import CollapseChessBoardItem from "./CollapseChessBoardItem";
 import RowChessBoardItem from "./RowChessBoardItem";
-import { advantagesData } from "./advantagesData";
+import { AdvantageData } from "./types";
 
-const DescriptionChessboard = () => {
+const DescriptionChessboard = ({
+  advantagesData,
+}: {
+  advantagesData: AdvantageData[];
+}) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
   // Update the isMobileView state on window resize
@@ -14,6 +21,7 @@ const DescriptionChessboard = () => {
   useEffect(() => {
     handleWindowResize(); // Check the initial width
     window.addEventListener("resize", handleWindowResize);
+
     return () => {
       // Clean up the event listener on component unmount
       window.removeEventListener("resize", handleWindowResize);

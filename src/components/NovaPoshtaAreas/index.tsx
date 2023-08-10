@@ -1,3 +1,5 @@
+"use client";
+
 import NovaPoshtaAreasContainer from "@/containers/NovaPoshtaAreasContainer";
 
 const NovaPoshtaAreas = () => {

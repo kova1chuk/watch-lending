@@ -1,27 +1,45 @@
+"use client";
+
 import { Button, Carousel, Rate } from "antd";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Scada } from "next/font/google";
+
 import TopBannerCarousel from "./TopBannerCarousel";
 import WatchCharacteristics from "./WatchCharacteristics";
-import { Scada } from "next/font/google";
 import Banner from "./Banner";
 
-const bannerContainer: React.CSSProperties = {
-  backgroundImage: "url('/assets/img/background/blur.webp')",
-  backgroundPosition: "center",
-  backgroundSize: "cover",
-  backgroundRepeat: "no-repeat",
-};
+interface Props {
+  mainImage: string;
+  backgroundBlurImage: string;
+  topSlogan: string;
+  mainColor: string;
+  sale: number;
+  price: number;
+}
 
-interface Props {}
+const MainBannerCarousel: React.FC<Props> = ({
+  mainImage,
+  backgroundBlurImage,
+  topSlogan,
+  mainColor,
+  sale,
+  price,
+}) => {
+  const bannerContainer: React.CSSProperties = {
+    // backgroundImage: "url('/assets/img/background/blur.webp')",
+    backgroundImage: `url(${backgroundBlurImage})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
 
-const MainBannerCarousel: React.FC<Props> = () => {
   return (
     <div id="banner-carousel" style={{ ...bannerContainer }}>
-      <TopBannerCarousel />
+      <TopBannerCarousel slogan={topSlogan} mainColor={mainColor} />
       <Banner
-        imageUrl="/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp"
-        discount="-35%"
+        imageUrl={mainImage}
+        discount={`${sale}%`}
         buttonText="Хочу Замовити"
       />
       <WatchCharacteristics />

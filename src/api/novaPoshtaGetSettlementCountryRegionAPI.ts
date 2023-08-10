@@ -48,6 +48,7 @@ export async function callNovaPoshtaGetSettlementCountryRegionAPI(
 
     const data = await response.json();
     console.log("settlementCountryRegionResp", data);
+
     return data;
   } catch (error) {
     console.error("Error calling Nova Poshta API:", error);

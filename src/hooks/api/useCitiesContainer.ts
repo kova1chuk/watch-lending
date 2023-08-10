@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import { fetchCities } from "@/api"; // Replace with the actual path to the cities API file
 
 export const useCitiesContainer = () => {

@@ -1,5 +1,8 @@
-import callUkrPoshtaGetWarehousesByLocation from "@/api/ukrPoshtaGetWarehousesByLocation";
+"use client";
+
 import React, { useState, useEffect } from "react";
+
+import callUkrPoshtaGetWarehousesByLocation from "@/api/ukrPoshtaGetWarehousesByLocation";
 
 const apiKey = process.env.NEXT_PUBLIC_G_MAPS_API_KEY;
 

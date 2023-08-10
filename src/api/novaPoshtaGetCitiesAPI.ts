@@ -70,6 +70,7 @@ export async function callNovaPoshtaGetCitiesAPI(
     }
 
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error("Error calling Nova Poshta API:", error);

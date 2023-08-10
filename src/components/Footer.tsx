@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Layout } from "antd";
 import Link from "next/link";
