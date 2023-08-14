@@ -98,35 +98,31 @@ const NovaPoshtaAreasContainer: React.FC<NovaPoshtaAreasContainerProps> = ({
   };
 
   const onSubmit = async () => {
-    const orderDetails = {
-      delivery: "novaposhta",
-      city: selectedCity,
-      settlementsRegion: selectedSettlementRegion,
-      street: selectedStreet,
-      warehouse: selectedWarehouse,
-      product: "Smartphone",
-      seller: "John's Electronics",
-      price: "$500",
-    };
-
-    // const webhookUrl = "http://localhost:3001/order"; // Replace with your webhook URL
-
-    const webhookUrl = `${process.env.NEXT_PUBLIC_TG_BOT_URL}/order`; // Replace with your webhook URL
-
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(orderDetails),
-      });
-
-      const data = await response.json();
-      console.log("Order details sent to Telegram bot:", data);
-    } catch (error) {
-      console.error("Error sending order details:", error);
-    }
+    // const orderDetails = {
+    //   delivery: "novaposhta",
+    //   city: selectedCity,
+    //   settlementsRegion: selectedSettlementRegion,
+    //   street: selectedStreet,
+    //   warehouse: selectedWarehouse,
+    //   product: "Smartphone",
+    //   seller: "John's Electronics",
+    //   price: "$500",
+    // };
+    // // const webhookUrl = "http://localhost:3001/order"; // Replace with your webhook URL
+    // const webhookUrl = `${process.env.NEXT_PUBLIC_TG_BOT_URL}/order`; // Replace with your webhook URL
+    // try {
+    //   const response = await fetch(webhookUrl, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(orderDetails),
+    //   });
+    //   const data = await response.json();
+    //   console.log("Order details sent to Telegram bot:", data);
+    // } catch (error) {
+    //   console.error("Error sending order details:", error);
+    // }
   };
 
   const renderContent = () => {
