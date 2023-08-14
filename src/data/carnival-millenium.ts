@@ -3,9 +3,9 @@ import { Advantage, MainProps, OtherProduct, Review } from "@/types";
 export const mainProps: MainProps = {
   mainImage: "/assets/img/carnival-millenium/carnival-millenium-4.webp",
   backgroundBlurImage: "/assets/img/carnival-millenium/background-blur.webp",
-  price: 3999,
+  price: 2359,
   comparePrice: 4999,
-  sale: 25,
+  sale: 50,
   productTitle: "Carnival Milenium",
   topSlogan: "Нескінченна витонченість від Carnival.",
   styles: {
