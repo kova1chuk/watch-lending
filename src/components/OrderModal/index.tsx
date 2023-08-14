@@ -91,7 +91,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
     // setCurrentStep(4);
     console.log(selectedShippingTab, selectedShippingTab == "nova");
     const orderDetails = {
-      product: `Продукт: ${productTitle}/Безкоштовна доставка/Подарункова упаковка`,
+      product: `Продукт: ${productTitle}/Швидка доставка/Подарункова упаковка`,
       name: `Замовник: ${name}`,
       phone: `Номер телефону: +380${phoneNumber}`,
       shipping: `Доставка: ${
@@ -116,6 +116,8 @@ const OrderModal: React.FC<OrderModalProps> = ({
       const data = await response.json();
       console.log("Order details sent to Telegram bot:", data);
       setCurrentStep(4);
+
+      return;
     } catch (error) {
       console.error("Error sending order details:", error);
     }
@@ -233,7 +235,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
               // footer={<div>Footer</div>}
               bordered
               dataSource={[
-                `Продукт: Годинник ${productTitle}/Безкоштовна доставка/Подарункова упаковка`,
+                `Продукт: Годинник ${productTitle}/Швидка доставка/Подарункова упаковка`,
                 `Замовник: ${name}`,
                 `Номер телефону: +380${phoneNumber}`,
                 `Доставка: ${
@@ -245,7 +247,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
               ]}
               renderItem={(item: string) => <List.Item>{item}</List.Item>}
             />
-            {/* <Text>{`Продукт: Годинник Cheetah Black/Безкоштовна доставка/Подарункова упаковка`}</Text>
+            {/* <Text>{`Продукт: Годинник Cheetah Black/Швидка доставка/Подарункова упаковка`}</Text>
             <Text>{`Замовник: ${name}`}</Text>
             <Text>{`Номер телефону: ${phoneNumber}`}</Text>
             <Text>{`Доставка: ${
@@ -358,7 +360,7 @@ const OrderModal: React.FC<OrderModalProps> = ({
       cancelButtonProps={{
         size: "large",
         style: {
-          display: currentStep === 4 ? "none" : "inline-block",
+          display: [3, 4].includes(currentStep) ? "none" : "inline-block",
         },
       }}
     >
