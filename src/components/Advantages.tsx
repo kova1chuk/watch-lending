@@ -21,7 +21,7 @@ const advantagesData = [
   {
     title: "Доставка",
     label: "Відправка до 17:00",
-    description: "Безкоштовна доставка.",
+    description: "Швидка доставка.",
   },
   {
     title: "Гарантія якості",

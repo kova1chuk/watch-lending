@@ -39,7 +39,7 @@ const MainBannerCarousel: React.FC<Props> = ({
       <TopBannerCarousel slogan={topSlogan} mainColor={mainColor} />
       <Banner
         imageUrl={mainImage}
-        discount={`${sale}%`}
+        discount={`-${sale}%`}
         buttonText="Хочу Замовити"
       />
       <WatchCharacteristics />

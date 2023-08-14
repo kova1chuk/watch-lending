@@ -3,9 +3,9 @@ import { Advantage, MainProps, OtherProduct, Review } from "@/types";
 export const mainProps: MainProps = {
   mainImage: "/assets/img/cheetah-mars-black/cheetah-mars-black 2.webp",
   backgroundBlurImage: "/assets/img/background/blur.webp",
-  price: 1799,
-  comparePrice: 2999,
-  sale: 35,
+  price: 1359,
+  comparePrice: 1999,
+  sale: 30,
   productTitle: "Cheetah Black",
   topSlogan: "Нескінченна витонченість від Carnival.",
   styles: {

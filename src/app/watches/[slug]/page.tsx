@@ -33,20 +33,32 @@ const Footer = dynamic(async () => (await import("@/components")).Footer, {
   loading: () => <p>Loading...</p>,
 });
 
-const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
-  const [isOrderModalOpen, setOrderIsModalOpen] = useState<boolean>(false);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+const sendVisitData = async () => {
+  const webhookUrl = `${process.env.NEXT_PUBLIC_TG_BOT_URL}/visit`; // Replace with your webhook URL
 
-  useEffect(() => {
-    // ping bot
-    const webhookUrl = `${process.env.NEXT_PUBLIC_TG_BOT_URL}`;
-    fetch(webhookUrl, {
-      method: "GET",
+  try {
+    const response = await fetch(webhookUrl, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     });
 
+    const data = await response.json();
+    console.log("Visit details sent to Telegram bot:", data);
+  } catch (error) {
+    sendVisitData();
+    console.error("Error sending visit details:", error);
+  }
+};
+
+const WatchPage = ({ params }: { params: { slug: WatchesSlugs } }) => {
+  const [isOrderModalOpen, setOrderIsModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
     // const data = await import('fuse.js')
+    sendVisitData();
   }, []);
 
   if (!params.slug || !data[params.slug]) return { notFound: true };
